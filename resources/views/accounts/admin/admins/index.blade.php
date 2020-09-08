@@ -26,6 +26,7 @@ All Registered Users
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Job_Title</th>
         <th>Status</th>
         <th>Photo</th>
         <th>Action</th>
@@ -40,6 +41,7 @@ All Registered Users
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role->name }}</td>
+                    <td>{{ $user->job_title == '' ? 'Not a Staff' : $user->job_title }}</td>
                     <td>{{ $user->status }}</td>
                     <td><img width="50" class="img-circle" src="{{ $user->photo == '' ? '/images/default.png' : $user->photo->name   }}" alt=""></td>
                     <td><a  class="btn btn-primary" href="{{ route('users.show', $user->id) }}">View</a</td>

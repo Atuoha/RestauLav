@@ -73,6 +73,21 @@ Add Users
            @enderror
         </div>
 
+        <!-- ADDITIONAL OPTIONAL FIELD TRIGGER -->
+            <label class="checkbox">
+                <input type="checkbox" id="checkbox" value="remember-me"> Are you registering a staff?
+            </label>
+        <!--  -->
+
+
+        <!-- ADDITIONAL OPTIONAL FIELD -->
+        <div class="Form-group" id="job_field">
+           {!! Form::label('job_title', 'Job Title', ['class'=>'control-label']) !!}
+           {!! Form::text('job_title',null,['class'=>'form-control','placeholder'=>'Enter Job Title'])!!}
+        </div>
+        <!--  -->
+
+
     </div>
 </div>
 
@@ -90,4 +105,34 @@ Add Users
 
 
 </section>
+
+
+
+
+
+
+
+
+
+<!-- Tiny Css for hiding job_field -->
+<style>
+    #job_field{
+        display:none;
+    }
+</style>
+<!--  -->
+
+<!-- Script for job_field -->
+<script src="/admin_assets/js/jquery.js"></script>
+    <script>
+        $('#checkbox').click(function(){
+            if(this.checked == true){
+                $('#job_field').fadeIn('slow');
+            }else{
+                $('#job_field').fadeOut('slow');
+            }
+        })
+    </script>
+<!--  -->
+
 @endsection
