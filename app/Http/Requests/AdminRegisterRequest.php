@@ -26,11 +26,11 @@ class AdminRegisterRequest extends FormRequest
         return [
             //
 
-            'name'=> 'bail | required | min=10',
+            'name'=> 'bail | required | min:10',
             'email'=> 'required',
-            'photo_id'=> 'min=10',
+            'photo_id'=> 'required',
             'role_id'=> 'required',
-            'password'=> 'required | min=8',
+            'password'=> 'required | min:8',
 
         ];
     }

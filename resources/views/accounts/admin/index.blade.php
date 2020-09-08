@@ -22,7 +22,7 @@ Dashboard
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box brown-bg">
-              <i class="fa fa-dish"></i>
+              <i class="fa fa-pasta"></i>
               <div class="count">7.538</div>
               <div class="title">Dishes</div>
             </div>

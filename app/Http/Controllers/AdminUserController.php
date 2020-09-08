@@ -51,13 +51,14 @@ class AdminUserController extends Controller
         if($file = $request->file('photo_id')){
             $name = time() . $file->getClientOriginalName();
             $photo = Photo::create(['name'=> $name]);
-            $file->move('/images/', $name);
+            $file->move('images', $name);
             $input['photo_id'] = $photo->id;
         }
+        
         $input['password'] = Hash::make($request->password);
         User::create($input);
 
-        Session::flash('USER_CREATE', 'A new User has been created :) |'. $input['name'] .'|');
+        Session::flash('USER_CREATE', 'A new User has been created :) | '. $input['name'] .' |');
         return redirect('/admin/users');
     }
 
@@ -70,6 +71,10 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
+
+        $user = User::findOrFail($id);
+
+        return view('accounts.admin.admins.show', compact('user') );
     }
 
     /**
@@ -81,6 +86,10 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        $role = Role::pluck('name', 'id')->all();
+
+        return view('accounts.admin.admins.edit', compact('user', 'role') );
     }
 
     /**
@@ -93,6 +102,44 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        // validation
+        $request->validate([
+
+            'name'=> 'bail | required | min:10',
+            'email'=> 'required',
+            'role_id'=> 'required',
+        ]);
+        
+        // pulling user
+        $user = User::findOrFail($id);
+        
+        //hashing password if exists
+        if(trim($request->password) == ''){
+            $input = $request->except('password');
+        }else{
+            $input = $request->all();
+            $input['password'] = Hash::make($request->password);
+        }
+
+        // saving file and linking it input if it exists
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $photo = Photo::create(['name'=>$name]);
+            $file->move('images',$name);  //Moving photo 
+            unlink(public_path().$user->photo->name); //Deleting old photo
+            $input['photo_id'] = $photo->id;
+        }
+
+        
+        // session flash
+        Session::flash('USER_UPDATE', 'Profile update for'. $user->name .' was successfully changed to '. $input['name'] .'');
+
+        // updating user
+        $user->update($input);
+
+        //redirect to users index page
+        return redirect('/admin/users');
     }
 
     /**
@@ -104,5 +151,16 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        Session::flash('USER_DELETE', 'Profile that links with '. $user->name .' has been deleted successfully');
+
+        if($user->photo != ''){
+            unlink(public_path().$user->photo->name);
+        }
+
+        // Deleting User
+        $user->delete();
+        return redirect('/admin/users');  //redirect to users index page
+
     }
 }

@@ -9,15 +9,15 @@
 Add Users
 </header>
    
-{!! Form::open(['method'=>'Post', 'action'=>'AdminUserController@store', 'file'=>true]) !!}
+{!! Form::open(['method'=>'Post', 'action'=>'AdminUserController@store', 'files'=>true]) !!}
 
 <div class="container">
 <div class="row">
     <div class="col-sm-6">
 
         <div class="Form-group">
-           {!! Form::label('fullname', 'Fullname', ['class'=>'control-label']) !!}
-           {!! Form::text('fullname',null,['class'=>'form-control','placeholder'=>'Enter Fullname'])!!}
+           {!! Form::label('name', 'Fullname', ['class'=>'control-label']) !!}
+           {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Enter Fullname'])!!}
 
            @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -67,6 +67,7 @@ Add Users
         <div class="Form-group">
             {!! Form::label('photo_id', 'Picture', ['class'=>'control-label']) !!}
             {!! Form::file('photo_id',['class'=> 'form-control', 'accept'=>'image*/'])!!}
+
             @error('photo_id')
             <div class="alert alert-danger">{{ $message }}</div>
            @enderror

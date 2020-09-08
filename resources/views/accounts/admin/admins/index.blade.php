@@ -41,9 +41,9 @@ All Registered Users
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role->name }}</td>
                     <td>{{ $user->status }}</td>
-                    <td><img width="50" src="{{ $user->photo == '' ? '/images/default.png' : $user->photo->name   }}" alt=""></td>
+                    <td><img width="50" class="img-circle" src="{{ $user->photo == '' ? '/images/default.png' : $user->photo->name   }}" alt=""></td>
                     <td><a  class="btn btn-primary" href="{{ route('users.show', $user->id) }}">View</a</td>
-                    <td><a class="btn btn-success" href="{{ route('users.update', $user->id) }}">Edit</a</td>
+                    <td><a class="btn btn-success" href="{{ route('users.edit', $user->id) }}">Edit</a</td>
 
                     <td>
                         {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUserController@destroy', $user->id] ]) !!}
@@ -59,7 +59,7 @@ All Registered Users
 
     <div class="col-sm-6">
         <div class="col-sm-6 col-off-sm-5">
-            {{ render() }}
+            {{ $users->render() }}
         </div>
     </div>
 </section>
