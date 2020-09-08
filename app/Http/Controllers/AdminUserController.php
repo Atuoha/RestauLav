@@ -127,13 +127,17 @@ class AdminUserController extends Controller
             $name = time() . $file->getClientOriginalName();
             $photo = Photo::create(['name'=>$name]);
             $file->move('images',$name);  //Moving photo 
-            unlink(public_path().$user->photo->name); //Deleting old photo
+
+            if($user->photo != ''){
+                unlink(public_path().$user->photo->name);  //Deleting old photo
+            }
+
             $input['photo_id'] = $photo->id;
         }
 
         
         // session flash
-        Session::flash('USER_UPDATE', 'Profile update for'. $user->name .' was successfully changed to '. $input['name'] .'');
+        Session::flash('USER_UPDATE', 'Profile update for '. $user->name .' was successfully changed to '. $input['name'] .'');
 
         // updating user
         $user->update($input);

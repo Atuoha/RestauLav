@@ -41,17 +41,14 @@
             </ul>
           </li>
 
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Categories</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
+
+          <li>
+            <a class="" href="{{ route('categories.index')}}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           route('category.index') }}">
+                          <i class="icon_genius"></i>
+                          <span>Category</span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="general.html">All Categories</a></li>
-              <li><a class="" href="buttons.html">Add Categories</a></li>
-            </ul>
           </li>
+
 
           <li class="sub-menu">
             <a href="javascript:;" class="">

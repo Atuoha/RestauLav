@@ -34,6 +34,10 @@ Route::resource('/admin/users', 'AdminUserController');
 Route::resource('/admin/photos', 'PhotoController');    
     // 
 
+    // CATEGORY ROUTES
+Route::resource('/admin/categories', 'CategoryController');    
+    //
+
 Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
 Route::view('/admin/profile', 'accounts.admin.profile.index')->name('admin.profile');
 
