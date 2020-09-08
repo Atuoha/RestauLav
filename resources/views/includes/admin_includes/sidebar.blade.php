@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="index.html">
+            <a class="" href="{{ route('admin_dashboard') }}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -24,8 +24,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">All Admins/Users</a></li>
-              <li><a class="" href="form_validation.html">Add Admin/Users</a></li>
+              <li><a class="" href="{{ route('users.index') }}">All Admins/Users</a></li>
+              <li><a class="" href="{{ route('users.create') }}">Add Admin/Users</a></li>
             </ul>
           </li>
 
@@ -75,7 +75,7 @@
 
           <li>
             <a class="" href="widgets.html">
-                          <i class="icon_contact"></i>
+                          <i class="icon_genius"></i>
                           <span>Contacts</span>
                       </a>
           </li>

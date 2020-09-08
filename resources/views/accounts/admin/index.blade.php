@@ -1,28 +1,60 @@
 @extends('layouts.admin_layouts.template')
-@section('page_name', 'All Reservations')
+@section('page_name', 'Dashboard')
 
 @section('content')
     
 
 <section class="panel">
 <header class="panel-heading no-border">
-All Reservations
+Dashboard
 </header>
-    <table class="table table-bordered">
-    <thead>
-        <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Occupation</th>
-        <th>Photo</th>
-        <th>Date</th>
-        <th>Message</th>
-        <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-    </table>
+<div  style="padding:10px;">
+    <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box blue-bg">
+              <i class="fa fa-user"></i>
+              <div class="count">6.674</div>
+              <div class="title">Users</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box brown-bg">
+              <i class="fa fa-dish"></i>
+              <div class="count">7.538</div>
+              <div class="title">Dishes</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box dark-bg">
+              <i class="fa fa-thumbs-o-up"></i>
+              <div class="count">4.362</div>
+              <div class="title">Reservations</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box green-bg">
+              <i class="fa fa-envelope"></i>
+              <div class="count">1.426</div>
+              <div class="title">Contacts</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+        </div>
+        <!--/.row-->
+
+
+       
+</div>
 </section>
 @endsection

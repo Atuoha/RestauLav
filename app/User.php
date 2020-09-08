@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'photo_id', 'role_id', 'status'
     ];
 
     /**
@@ -36,4 +36,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+
+    public function is_admin(){
+
+        if($this->role->name == 'Admin'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // public function user_redirect(){
+    //     if($this->role == 'admin'){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+    public function photo(){
+        return $this->belongsTo('App\Photo');
+    }
 }
