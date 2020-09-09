@@ -130,6 +130,8 @@ class AdminUserController extends Controller
 
             if($user->photo != ''){
                 unlink(public_path().$user->photo->name);  //Deleting old photo
+                Photo::findOrFail($user->photo)->delete();
+
             }
 
             $input['photo_id'] = $photo->id;
@@ -160,6 +162,7 @@ class AdminUserController extends Controller
 
         if($user->photo != ''){
             unlink(public_path().$user->photo->name);
+            Photo::findOrFail($user->photo)->delete();
         }
 
         // Deleting User

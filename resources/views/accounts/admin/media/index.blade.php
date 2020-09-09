@@ -44,7 +44,7 @@ All Media
             @foreach($photos as $photo)
                 <tr>
                     <td>{{ $photo->id }}</td>
-                    <td><img src="{{ $photo->name }}" alt=""></td>
+                    <td><img width="60" src="{{ $photo->name }}" alt=""></td>
                     <td>
                         {!! Form::open(['method'=>'DELETE', 'action'=>['PhotoController@destroy', $photo->id] ]) !!}
                             {!! Form::submit('Delete Photo', ['class'=>'btn btn-danger']) !!}
