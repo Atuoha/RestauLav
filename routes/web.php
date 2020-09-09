@@ -26,6 +26,10 @@ Auth::routes();
 
 Route::group(['middleware'=>'admin'], function(){
 
+    // ADMIN DASHBOARD ROUTE
+Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
+    // 
+
     // ADMIN USER ROUTES
 Route::resource('/admin/users', 'AdminUserController');
     // 
@@ -42,8 +46,25 @@ Route::resource('/admin/categories', 'CategoryController');
 Route::resource('/admin/medias', 'PhotoController');    
     // 
 
-Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
+    // DISH ROUTES
+Route::resource('/admin/dishes', 'DishController');    
+    // 
+
+    // DELETED DISHES ROUTE
+Route::resource('dishes/deleted', 'DeletedDishController');    
+    // 
+
+    // RESTORE DELETED DISHES ROUTE
+Route::get('/deleted/restore/{id}', 'DeletedDishController@restore_dishes')->name('deleted.restore');
+    // 
+
+    // TERMINATE DELETED DISHES ROUTE
+Route::get('/deleted/terminate/{id}', 'DeletedDishController@terminate_dishes')->name('deleted.terminate');
+    // 
+
+    // PROFILE ROUTE 
 Route::view('/admin/profile', 'accounts.admin.profile.index')->name('admin.profile');
+    // 
 
 
 });
@@ -54,6 +75,6 @@ Route::view('/admin/profile', 'accounts.admin.profile.index')->name('admin.profi
 
 
 // Route for Unisharp filemanager
-// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-//     \UniSharp\LaravelFilemanager\Lfm::routes();
-// });
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

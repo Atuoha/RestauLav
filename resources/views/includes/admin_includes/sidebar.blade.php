@@ -36,8 +36,10 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="general.html">All Dishes</a></li>
-              <li><a class="" href="buttons.html">Add Dishes</a></li>
+              <li><a class="" href="{{ route('dishes.index') }}">All Dishes</a></li>
+              <li><a class="" href="{{ route('dishes.create') }}">Add Dishes</a></li>
+              <li><a class="" href="{{ url('dishes/deleted') }}">Trashed Dishes</a></li>
+
             </ul>
           </li>
 

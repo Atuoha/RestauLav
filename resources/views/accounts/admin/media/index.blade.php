@@ -15,9 +15,11 @@
 <header class="panel-heading no-border">
 All Media
 </header>
+<div class="container">
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top:10px;">
+        Select Imagery(s) to upload
         {!! Form::open(['method'=>'POST', 'action'=>'PhotoController@store', 'class'=>'dropzone']) !!}
             
         <!-- dROPZONE Externals -->
@@ -36,15 +38,17 @@ All Media
         <tr>
         <th>#</th>
         <th>Photo</th>
+        <th>Created</th>
         <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @if($photos)
+        @if(count($photos) > 0)
             @foreach($photos as $photo)
                 <tr>
                     <td>{{ $photo->id }}</td>
                     <td><img width="60" src="{{ $photo->name }}" alt=""></td>
+                    <td>{{ $photo->created_at->diffForHumans() }}</td>
                     <td>
                         {!! Form::open(['method'=>'DELETE', 'action'=>['PhotoController@destroy', $photo->id] ]) !!}
                             {!! Form::submit('Delete Photo', ['class'=>'btn btn-danger']) !!}
@@ -52,7 +56,9 @@ All Media
                     </td>
                 </tr>
             @endforeach
-        @endif 
+        @else
+            <div class="alert alert-danger">NO MEDIAS YET!</div>
+        @endif
     </tbody>
     </table>  
 
@@ -62,6 +68,6 @@ All Media
     </div>
 </div>
 
-
+</div>
 </section>
 @endsection

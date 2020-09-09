@@ -17,7 +17,7 @@ class PhotoController extends Controller
     public function index()
     {
         //
-        $photos = Photo::paginate(5);
+        $photos = Photo::paginate(4);
         return view('accounts.admin.media.index', compact('photos'));
 
     }
@@ -43,11 +43,10 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
         //
-        if($file = $request->file('name')){
+            $file = $request->file('file');
             $name = time() . $file->getClientOriginalName();
             $photo = Photo::create(['name'=>$name]);
             $file->move('images', $name);
-        }
 
         Session::flash('MEDIA_CREATE', 'Photo(s) has been added successfully');
         return redirect('/admin/medias');
@@ -99,6 +98,8 @@ class PhotoController extends Controller
         //
         $photo = Photo::findOrFail($id);
         unlink(public_path() . $photo->name);
+        Photo::findOrFail($id)->delete();
+
 
         Session::flash('MEDIA_DELETE', 'Photo has been deleted successfully');
         return redirect('/admin/medias');
