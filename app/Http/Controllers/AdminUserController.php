@@ -9,6 +9,8 @@ use App\Role;
 use App\Photo;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 class AdminUserController extends Controller
 {
@@ -168,6 +170,14 @@ class AdminUserController extends Controller
         // Deleting User
         $user->delete();
         return redirect('/admin/users');  //redirect to users index page
+
+    }
+
+    public function profile(){
+
+        $user_id = Auth::user()->id;
+        $profile = User::findOrFail($user_id);
+        return view('accounts.admin.profile.index', compact('profile'));
 
     }
 }

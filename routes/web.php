@@ -62,8 +62,11 @@ Route::get('/deleted/restore/{id}', 'DeletedDishController@restore_dishes')->nam
 Route::get('/deleted/terminate/{id}', 'DeletedDishController@terminate_dishes')->name('deleted.terminate');
     // 
 
-    // PROFILE ROUTE 
-Route::view('/admin/profile', 'accounts.admin.profile.index')->name('admin.profile');
+    // PROFILE ROUTES 
+Route::get('/admin/profile', 'AdminUserController@profile')->name('admin.profile');
+
+Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.profile.edit');
+
     // 
 
 

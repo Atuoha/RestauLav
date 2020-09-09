@@ -11,7 +11,7 @@
           </li>
 
           <li>
-            <a class="" href="widgets.html">
+            <a class="" href="{{ route('admin.profile') }}">
                           <i class="icon_profile"></i>
                           <span>Profile</span>
                       </a>

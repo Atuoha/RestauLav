@@ -3,6 +3,9 @@
 
 @section('content')
     
+@if(session('USER_UPDATE'))
+    <div class="alert alert-success">{{ session('USER_UPDATE') }}</div>
+@endif
 
 <section class="panel b-4">
 <header class="panel-heading no-border">
@@ -81,7 +84,7 @@ Edit User | {{ $user->name }}
        
          <!-- ADDITIONAL OPTIONAL FIELD TRIGGER -->
          <label class="checkbox">
-                <input type="checkbox" id="checkbox" value="remember-me"> Are you registering a staff?
+                <input type="checkbox" id="checkbox" value="remember-me"> Are you editing a staff?
             </label>
         <!--  -->
 
