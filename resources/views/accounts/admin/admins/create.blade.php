@@ -123,7 +123,6 @@ Add Users
 <!--  -->
 
 <!-- Script for job_field -->
-<script src="/admin_assets/js/jquery.js"></script>
     <script>
         $('#checkbox').click(function(){
             if(this.checked == true){

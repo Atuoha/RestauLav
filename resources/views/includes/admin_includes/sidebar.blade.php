@@ -49,20 +49,13 @@
                       </a>
           </li>
 
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+          <li>
+            <a class="" href="{{ route('medias.index')}}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           route('category.index') }}">
                           <i class="icon_desktop"></i>
                           <span>Media</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="general.html">All Media</a></li>
-              <li><a class="" href="buttons.html">Upload Media</a></li>
-            </ul>
           </li>
-
-
+          
           <li>
             <a class="" href="widgets.html">
                           <i class="icon_genius"></i>

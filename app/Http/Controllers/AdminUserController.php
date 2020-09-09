@@ -58,7 +58,7 @@ class AdminUserController extends Controller
         $input['password'] = Hash::make($request->password);
         User::create($input);
 
-        Session::flash('USER_CREATE', 'A new User has been created :) | '. $input['name'] .' |');
+        Session::flash('USER_CREATE', 'A new User has been created | '. $input['name'] .' |');
         return redirect('/admin/users');
     }
 

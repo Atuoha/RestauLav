@@ -38,6 +38,10 @@ Route::resource('/admin/photos', 'PhotoController');
 Route::resource('/admin/categories', 'CategoryController');    
     //
 
+    // MEDIA ROUTES
+Route::resource('/admin/medias', 'PhotoController');    
+    // 
+
 Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
 Route::view('/admin/profile', 'accounts.admin.profile.index')->name('admin.profile');
 
