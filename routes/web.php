@@ -24,7 +24,7 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware'=>'admin_user'], function(){
+Route::group(['middleware'=>'admin_only'], function(){
 
 // ADMIN ROUTES 
 
@@ -71,6 +71,7 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
     // 
 
 // END OF ADMIN ROUTES
+});
 
 
 
@@ -78,23 +79,27 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
 
 
 
+Route::group(['middleware'=>'admin_user'], function(){
 
-
-
-// USER ROUTES
+    // USER ROUTES
 
     // USER DASHBOARD
 Route::view('/user/dashboard', 'accounts.user.index')->name('user_dashboard');    
-    // 
+// 
 
-    // RESERVATION ROUTES
+// RESERVATION ROUTES
 Route::resource('user/user_reserve', 'UserReservationController');
-    // 
-
-
+//
 
 
 });
+
+ 
+
+
+
+
+
 
 
 
