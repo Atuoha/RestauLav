@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="">
+            <a class="" href="{{ route('user_dashboard') }}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -24,9 +24,21 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Reservations</a></li>
-              <li><a class="" href="">Make Reservations</a></li>
+              <li><a class="" href="{{ route('user_reserve.index') }}">All Reservations</a></li>
+              <li><a class="" href="{{ route('user_reserve.create') }}">Make Reservations</a></li>
               <li><a class="" href="">Cancelled</a></li>
+            </ul>
+          </li>
+
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>Order</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="">All Order</a></li>
+              <li><a class="" href="">Make an Order</a></li>
             </ul>
           </li>
 

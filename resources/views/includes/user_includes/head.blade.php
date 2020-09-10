@@ -37,9 +37,13 @@
 
   <!-- Time Picker -->
   <link rel="stylesheet" href="/admin_assets/css/bootstrap-timepicker.min.css">
-
   <!-- Date Picker -->
   <link rel="stylesheet" href="/admin_assets/css/bootstrap-datepicker.min.css">
+  <!-- Jquery ui -->
+  <link rel="stylesheet" href="/admin_assets/css/jquery-ui.css">	
+  <!-- Linearicons -->
+  <link rel="stylesheet" href="/admin_assets/css/linearicons.css">
+
 
 
    <!-- container section end -->
@@ -47,9 +51,12 @@
   <script src="/admin_assets/js/jquery.js"></script>
   <script src="/admin_assets/js/bootstrap.min.js"></script>
   <!-- TimePicker -->
-  <script src="/admin_assets/js/bootstrap-timepicker.min..js"></script>
+  <script src="/admin_assets/js/bootstrap-timepicker.min.js"></script>
    <!-- DatePicker -->
-   <script src="/admin_assets/js/bootstrap-datepicker.min..js"></script>
+   <script src="/admin_assets/js/bootstrap-datepicker.js"></script>
+   <!-- Jquery ui -->
+   <script src="/admin_assets/js/jquery-ui.js"></script>		
+
   <!-- nice scroll -->
   <script src="/admin_assets/js/jquery.scrollTo.min.js"></script>
   <script src="/admin_assets/js/jquery.nicescroll.js" type="text/javascript"></script>

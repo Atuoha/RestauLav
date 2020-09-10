@@ -10,7 +10,7 @@
 Create Reservations
 </header>
     <div class="container">
-      {!! From::open(['method'=>'POST', 'action'=>'UserReservationController@store']) !!}
+      {!! Form::open(['method'=>'POST', 'action'=>'UserReservationController@store']) !!}
         <div class="row">
             <div class="col-sm-6">
                 
@@ -25,7 +25,7 @@ Create Reservations
 
                 <div class="form-group">
                     {!! Form::label('table_number', 'Table Number', ['class'=>'control-label']) !!}
-                    {!! Form::select('table_number', ['2'=>'Table For 2', '4'=>'Table for 4', '6'=>'Table for 6', '8'=>'Table for 8'], null, ['class'=>'form-control', 'placeholder'=>'Select Table Size']) !!}
+                    {!! Form::select('table_number', ['Table for 2'=>'Table For 2', 'Table for 4'=>'Table for 4', 'Table for 6'=>'Table for 6', 'Table for 8'=>'Table for 8', 'Table for 10'=>'Table for 10', 'Table for 12'=>'Table for 12'], null, ['class'=>'form-control', 'placeholder'=>'Select Table Size']) !!}
 
                     @error('table_number')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -34,26 +34,21 @@ Create Reservations
             </div>
 
             <div class="col-sm-6">
-                <div class="form-group">
-                    <div class="input-group dates-wrap">                                              
-                        <input id="datepicker2" required class="dates form-control"  placeholder="Date" type="text" name="date">                        
-                        <div class="input-group-prepend">
-                            <span  class="input-group-text"><span class="fa fa-calendar"></span></span>
-                        </div>											
-                    </div>
-
+                <div class="form-group dates-wrap">
+                        <label class="control-label">Date Of Reservation</label>
+                        <input id="datepicker2" class="dates form-control"  placeholder="Date" type="text" name="date">                        
+                       										
                     @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>	
                 
-                <div class="form-group">
-                    <div class="input-group bootstrap-timepicker timepicker input-small">
-                        <input class="form-control" id="timepicker1" data-provide="timepicker" required type="text" name="time" placeholder="Time"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Time'" name="time">
+                <div class="form-group bootstrap-timepicker timepicker">
+                    <label class="control-label">Time Of Reservation</label>
+                        <input class="form-control" id="timepicker1" data-provide="timepicker" type="text" name="time" placeholder="Time"  name="time">
                         <div class="input-group-prepend">
                             <span  class="input-group-addon input-group-text"><span class="fa fa-clock-o"></span></span>
                         </div>
-                    </div>	
 
                     @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -61,6 +56,9 @@ Create Reservations
                 </div>
 
             </div>
+        </div>
+
+            <div class="container">
         <div class="row">
             <div class="form-group">
                 {!! Form::label('message', 'Message', ['class'=>'control-label']) !!}
@@ -78,19 +76,14 @@ Create Reservations
 
         </div>
       {!! Form::close() !!}  
-    </div>
 </section>
 
 
 <!-- Activators -->
 <script>
     $(document).ready(function(){
-        $( function() {
-            $( "#datepicker" ).datepicker();
-            $( "#datepicker2" ).datepicker();
-            $('#timepicker1').timepicker();
-        });
-
+        $( "#datepicker2" ).datepicker();
+        $('#timepicker1').timepicker();
 
     })
 </script>

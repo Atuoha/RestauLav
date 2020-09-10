@@ -8,7 +8,7 @@ class Category extends Model
 {
     //
 
-    public $fillable = ['name'];
+    protected $fillable = ['name'];
 
 
     public function posts(){

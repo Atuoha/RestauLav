@@ -15,6 +15,15 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('email');
+            $table->string('contact');
+            $table->string('date');
+            $table->string('table_number');
+            $table->string('time');
+            $table->text('message');
+            $table->string('status')->default('Active');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
