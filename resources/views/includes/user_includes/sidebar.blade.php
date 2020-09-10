@@ -26,7 +26,7 @@
             <ul class="sub">
               <li><a class="" href="">All Reservations</a></li>
               <li><a class="" href="">Make Reservations</a></li>
-              <li><a class="" href="">Cancelled Reservations</a></li>
+              <li><a class="" href="">Cancelled</a></li>
             </ul>
           </li>
 

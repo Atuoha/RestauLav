@@ -22,13 +22,15 @@ class AdminEntry
             if(Auth::user()->is_admin()){
                return $next($request);
             }else{
-                return redirect('/account/end_user');
+                return $next($request);
             }
 
-         return redirect('/unactive-account');
+        //  return redirect('/unactive-account');   
+        // I was planning to use this to redirect unactivated account assuming i added the criteria on  is_admin()
 
+        }else{
+          return redirect('/');
         }
-        return redirect('/');
 
 
     }

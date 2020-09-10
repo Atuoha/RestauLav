@@ -9,7 +9,7 @@
       </div>
 
       <!--logo start-->
-      <a href="index.html" class="logo">RestauLav <span class="lite">Admin</span></a>
+      <a href="index.html" class="logo">RestauLav <span class="lite">USER</span></a>
       <!--logo end-->
 
       <div class="nav search-row" id="top_menu">
@@ -43,7 +43,15 @@
                 <a href="{{ route('admin.profile') }}"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="{{ route('logout') }}"><i class="icon_key_alt"></i> Log Out</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                <i class="icon_key_alt"></i> Log Out
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
               </li>
             </ul>
           </li>

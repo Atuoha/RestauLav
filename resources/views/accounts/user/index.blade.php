@@ -1,4 +1,4 @@
-@extends('layouts.admin_layouts.template')
+@extends('layouts.user_layouts.template')
 @section('page_name', 'Dashboard')
 
 @section('content')

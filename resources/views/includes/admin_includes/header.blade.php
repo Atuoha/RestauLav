@@ -40,10 +40,18 @@
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="{{ route('admin.profile') }}"><i class="icon_profile"></i> My Profile</a>
+                <a href=""><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="{{ route('logout') }}"><i class="icon_key_alt"></i> Log Out</a>
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+               <i class="icon_key_alt"></i> Log Out
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
               </li>
             </ul>
           </li>

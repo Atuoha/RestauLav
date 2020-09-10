@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -39,6 +41,15 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
+        if(Auth::check()){
+            if(Auth::user()->is_admin()){
+                $this->redirectTo = 'admin/dashboard';
+            }else{
+                $this->redirectTo = 'user/dashboard';
+            }
+        }
+        
     }
 
     /**

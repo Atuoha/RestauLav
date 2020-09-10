@@ -87,7 +87,9 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
 Route::view('/user/dashboard', 'accounts.user.index')->name('user_dashboard');    
     // 
 
-
+    // RESERVATION ROUTES
+Route::resource('user/user_reserve', 'UserReservationController');
+    // 
 
 
 

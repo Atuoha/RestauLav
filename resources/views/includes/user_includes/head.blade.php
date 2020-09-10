@@ -35,11 +35,21 @@
   <link href="/admin_assets/css/xcharts.min.css" rel=" stylesheet">
   <link href="/admin_assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
 
+  <!-- Time Picker -->
+  <link rel="stylesheet" href="/admin_assets/css/bootstrap-timepicker.min.css">
+
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/admin_assets/css/bootstrap-datepicker.min.css">
+
 
    <!-- container section end -->
   <!-- javascripts -->
   <script src="/admin_assets/js/jquery.js"></script>
   <script src="/admin_assets/js/bootstrap.min.js"></script>
+  <!-- TimePicker -->
+  <script src="/admin_assets/js/bootstrap-timepicker.min..js"></script>
+   <!-- DatePicker -->
+   <script src="/admin_assets/js/bootstrap-datepicker.min..js"></script>
   <!-- nice scroll -->
   <script src="/admin_assets/js/jquery.scrollTo.min.js"></script>
   <script src="/admin_assets/js/jquery.nicescroll.js" type="text/javascript"></script>
