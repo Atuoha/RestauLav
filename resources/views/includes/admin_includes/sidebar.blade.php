@@ -19,7 +19,7 @@
           
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
+                          <i class="icon_profile"></i>
                           <span>Admin/Users</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
@@ -58,11 +58,16 @@
                       </a>
           </li>
           
-          <li>
-            <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
                           <span>Reservations</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
+            <ul class="sub">
+              <li><a class="" href="">All Reservations</a></li>
+              <li><a class="" href="">Cancelled Reservations</a></li>
+            </ul>
           </li>
 
           <li>

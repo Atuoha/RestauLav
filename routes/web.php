@@ -24,7 +24,9 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware'=>'admin'], function(){
+Route::group(['middleware'=>'admin_user'], function(){
+
+// ADMIN ROUTES 
 
     // ADMIN DASHBOARD ROUTE
 Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
@@ -66,8 +68,28 @@ Route::get('/deleted/terminate/{id}', 'DeletedDishController@terminate_dishes')-
 Route::get('/admin/profile', 'AdminUserController@profile')->name('admin.profile');
 
 Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.profile.edit');
-
     // 
+
+// END OF ADMIN ROUTES
+
+
+
+
+
+
+
+
+
+
+// USER ROUTES
+
+    // USER DASHBOARD
+Route::view('/user/dashboard', 'accounts.user.index')->name('user_dashboard');    
+    // 
+
+
+
+
 
 
 });
