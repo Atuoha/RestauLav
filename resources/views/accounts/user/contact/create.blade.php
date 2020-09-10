@@ -1,5 +1,5 @@
 @extends('layouts.user_layouts.template')
-@section('page_name', 'Edit Contact')
+@section('page_name', 'Create Contact')
 
 @section('content')
 
@@ -11,7 +11,7 @@ Message Contact
 </header>
 
 <div class="container">
- {!! Form::model($contact, ['method'=>'PATCH', 'action'=>['UserContactController@update', $contact->id] ]) !!} 
+ {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store']) !!} 
     <div class="row">
        <div class="col-sm-6">
             <div class="form group">
@@ -38,7 +38,7 @@ Message Contact
 
     <div class="row container pull-right">
            <div class="form-group">
-               {!! Form::submit('Edit Contact', ['class'=>'btn btn-warning']) !!}
+               {!! Form::submit('Create Contact', ['class'=>'btn btn-success']) !!}
            </div>
        </div>
 {!! Form::close() !!}    

@@ -8,8 +8,6 @@
     <div class="alert alert-success">{{ session('RESERVATION_DELETE') }}</div>
 @endif
 
-
-
 <section class="panel">
 <header class="panel-heading no-border">
 All Cancelled Reservations | We just kept them safe for you just in case you feel like...
@@ -62,6 +60,10 @@ All Cancelled Reservations | We just kept them safe for you just in case you fee
     </tbody>
     </table>
 
-</div>
+    <div class="col-sm-6">
+        <div class="col-sm-6 col-off-sm-5">
+            {{ $reservations->render() }}
+        </div>
+    </div>
 </section>
 @endsection

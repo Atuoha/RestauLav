@@ -96,13 +96,16 @@ Route::resource('user/deleted_reserve', 'CancelledReservations');
     // 
 
     // RESTORE -CANCELLED ROUTES
-Route::get('user/deleted_reserve/retrieve', 'CancelledReservations@retrieve_cancelled')->name('deleted_reserve.retrieve');    
-// 
+Route::get('user/deleted_reserve/retrieve/{id}', 'CancelledReservations@retrieve_cancelled')->name('deleted_reserve.retrieve');    
+    // 
 
-  // TERMINATE -CANCELLED ROUTES
-Route::get('user/deleted_reserve/terminate', 'CancelledReservations@terminate_cancelled')->name('deleted_reserve.terminate');    
-  // 
+    // TERMINATE -CANCELLED ROUTES
+Route::get('user/deleted_reserve/terminate/{id}', 'CancelledReservations@terminate_cancelled')->name('deleted_reserve.terminate');    
+   // 
 
+   // CONTACT ROUTES
+Route::resource('/user/user_contact', 'UserContactController'); 
+  //    
 
 
 });

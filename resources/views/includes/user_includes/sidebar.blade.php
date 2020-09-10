@@ -49,8 +49,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Contacts</a></li>
-              <li><a class="" href="">Make Contacts</a></li>
+              <li><a class="" href="{{ route('user_contact.index') }}">All Contacts</a></li>
+              <li><a class="" href="{{ route('user_contact.create') }}">Make Contacts</a></li>
             </ul>
           </li>
 

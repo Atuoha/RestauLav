@@ -77,5 +77,11 @@ All Reservations
         
     </tbody>
     </table>
+
+    <div class="col-sm-6">
+        <div class="col-sm-6 col-off-sm-5">
+            {{ $reservations->render() }}
+        </div>
+    </div>
 </section>
 @endsection
