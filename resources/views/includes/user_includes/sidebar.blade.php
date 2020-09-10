@@ -26,7 +26,7 @@
             <ul class="sub">
               <li><a class="" href="{{ route('user_reserve.index') }}">All Reservations</a></li>
               <li><a class="" href="{{ route('user_reserve.create') }}">Make Reservations</a></li>
-              <li><a class="" href="">Cancelled</a></li>
+              <li><a class="" href="{{ route('deleted_reserve.index') }}">Cancelled</a></li>
             </ul>
           </li>
 

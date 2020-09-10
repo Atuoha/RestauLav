@@ -15,10 +15,16 @@
     <div class="alert alert-success">{{ session('RESERVATION_UPDATE') }}</div>
 @endif
 
+@if(session('RESERVATION_RETRIEVE'))
+    <div class="alert alert-success">{{ session('RESERVATION_RETRIEVE') }}</div>
+@endif
+
 <section class="panel">
 <header class="panel-heading no-border">
 All Reservations
 </header>
+
+
     <table class="table table-bordered">
     <thead>
         <tr>
@@ -56,7 +62,7 @@ All Reservations
                     <td><a class="btn btn-warning" href="{{ route('user_reserve.show', $reserve->id) }}">View</a></td>
                     <td>
                         {!! Form::open(['method'=>'DELETE', 'action'=>['UserReservationController@destroy', $reserve->id] ]) !!}
-                            {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                            {!! Form::submit('Delete/Cancel', ['class'=>'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     </td>
 

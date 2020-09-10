@@ -81,15 +81,28 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
 
 Route::group(['middleware'=>'admin_user'], function(){
 
-    // USER ROUTES
+// USER ROUTES
 
     // USER DASHBOARD
 Route::view('/user/dashboard', 'accounts.user.index')->name('user_dashboard');    
+    // 
+
+    // RESERVATION ROUTES
+Route::resource('user/user_reserve', 'UserReservationController');
+    //
+
+    // DELETED/CANCELLED ROUTES
+Route::resource('user/deleted_reserve', 'CancelledReservations');    
+    // 
+
+    // RESTORE -CANCELLED ROUTES
+Route::get('user/deleted_reserve/retrieve', 'CancelledReservations@retrieve_cancelled')->name('deleted_reserve.retrieve');    
 // 
 
-// RESERVATION ROUTES
-Route::resource('user/user_reserve', 'UserReservationController');
-//
+  // TERMINATE -CANCELLED ROUTES
+Route::get('user/deleted_reserve/terminate', 'CancelledReservations@terminate_cancelled')->name('deleted_reserve.terminate');    
+  // 
+
 
 
 });

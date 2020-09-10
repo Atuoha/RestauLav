@@ -12,7 +12,7 @@ class Reservation extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','email','contact','table_number','date','time','message','status'
+        'user_id','email','contact','table_number','date','time','message','status'
     ];
 
     public function user(){

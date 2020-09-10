@@ -1,4 +1,4 @@
-@extends('layouts.admin_layouts.template')
+@extends('layouts.user_layouts.template')
 @section('page_name', 'Single reserve')
 
 @section('content')
@@ -11,7 +11,6 @@ Single reserve | {{ $reserve->table_number }}
 </header>
 
 <div class="container">
-
 
 <table class="table table table-responsive table-bordered table-striped table-hover">
         <tbody>
@@ -64,14 +63,15 @@ Single reserve | {{ $reserve->table_number }}
                 <th>Last Update</th>
                 <td>{{ $reserve->updated_at->diffForHumans() }}</td>
                 </tr>
+
             
             @if($deleted_status == 'No Delete')    
                 <tr>
-                <th>Delete Action</th>
+                <th>Delete/Cancel Action</th>
                 <td>
                     {!! Form::open(['method'=>'DELETE', 'action'=>['UserReservationController@destroy', $reserve->id] ]) !!}
 
-                        {!! Form::submit('Delete Reservation',['class'=>'btn btn-danger']) !!}
+                        {!! Form::submit('Delete/Cancel Reservation',['class'=>'btn btn-danger']) !!}
 
                     {!! Form::close() !!}
                 </td>

@@ -10,7 +10,7 @@
 Edit Reservation | {{ $reservation->table_number }}
 </header>
     <div class="container">
-      {!! Form::model($reservation_id ['method'=>'PATCH', 'action'=>['UserReservationController@update', reservation_id] ]) !!}
+      {!! Form::model($reservation, ['method'=>'PATCH', 'action'=>['UserReservationController@update', $reservation->id] ]) !!}
         <div class="row">
             <div class="col-sm-6">
                 
@@ -25,7 +25,7 @@ Edit Reservation | {{ $reservation->table_number }}
 
                 <div class="form-group">
                     {!! Form::label('table_number', 'Table Number', ['class'=>'control-label']) !!}
-                    {!! Form::select('table_number', ['2'=>'Table For 2', '4'=>'Table for 4', '6'=>'Table for 6', '8'=>'Table for 8', '10'=>'Table for 10', '12'=>'Table for 12'], null, ['class'=>'form-control', 'placeholder'=>'Select Table Size']) !!}
+                    {!! Form::select('table_number', ['Table for 2'=>'Table For 2', 'Table for 4'=>'Table for 4', 'Table for 6'=>'Table for 6', 'Table for 8'=>'Table for 8', 'Table for 10'=>'Table for 10', 'Table for 12'=>'Table for 12'], null, ['class'=>'form-control', 'placeholder'=>'Select Table Size']) !!}
 
                     @error('table_number')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -36,7 +36,7 @@ Edit Reservation | {{ $reservation->table_number }}
             <div class="col-sm-6">
                 <div class="form-group dates-wrap">
                         <label class="control-label">Date Of Reservation</label>
-                        <input id="datepicker2" class="dates form-control"  placeholder="Date" type="text" name="date">                        
+                        {!! Form::text('date', null, ['class'=>'form-control dates','id'=>'datepicker2']) !!}                     
                        										
                     @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -45,7 +45,7 @@ Edit Reservation | {{ $reservation->table_number }}
                 
                 <div class="form-group bootstrap-timepicker timepicker">
                     <label class="control-label">Time Of Reservation</label>
-                        <input class="form-control" id="timepicker1" data-provide="timepicker" type="text" name="time" placeholder="Time"  name="time">
+                        {!! Form::text('time', null, ['class'=>'form-control dates','id'=>'timepicker1','data-provide'=>'timepicker']) !!}                     
                         <div class="input-group-prepend">
                             <span  class="input-group-addon input-group-text"><span class="fa fa-clock-o"></span></span>
                         </div>
