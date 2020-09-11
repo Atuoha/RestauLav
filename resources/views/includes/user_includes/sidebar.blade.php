@@ -11,7 +11,7 @@
           </li>
 
           <li>
-            <a class="" href="javascript:;">
+            <a class="" href="{{ route('user_profile.index') }}">
                           <i class="icon_profile"></i>
                           <span>Profile</span>
                       </a>

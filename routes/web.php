@@ -107,6 +107,10 @@ Route::get('user/deleted_reserve/terminate/{id}', 'CancelledReservations@termina
 Route::resource('/user/user_contact', 'UserContactController'); 
   //    
 
+  //PROFILE ROUTES
+Route::resource('user/user_profile', 'UserProfileController');
+ // 
+
 
 });
 

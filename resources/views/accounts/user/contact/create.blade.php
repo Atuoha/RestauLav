@@ -1,10 +1,8 @@
 @extends('layouts.user_layouts.template')
 @section('page_name', 'Create Contact')
+@include('includes.tinymce')
 
 @section('content')
-
-
-
 <section class="panel">
 <header class="panel-heading no-border">
 Message Contact 
@@ -33,6 +31,7 @@ Message Contact
             @error('subject')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            
        </div>         
     </div>
 

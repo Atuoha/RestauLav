@@ -46,7 +46,7 @@ Create Reservations
                 
                 <div class="form-group bootstrap-timepicker timepicker">
                     <label class="control-label">Time Of Reservation</label>
-                        {!! Form::text('time', null, ['class'=>'form-control dates','id'=>'timepicker1','data-provide'=>'timepicker']) !!}                     
+                        {!! Form::text('time', null, ['class'=>'form-control','id'=>'timepicker1','data-provide'=>'timepicker']) !!}                     
                         <div class="input-group-prepend">
                             <span  class="input-group-addon input-group-text"><span class="fa fa-clock-o"></span></span>
                         </div>
