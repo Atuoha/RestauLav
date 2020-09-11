@@ -1,5 +1,6 @@
 @extends('layouts.user_layouts.template')
 @section('page_name', 'Edit Contact')
+@include('includes.tinymce')
 
 @section('content')
 

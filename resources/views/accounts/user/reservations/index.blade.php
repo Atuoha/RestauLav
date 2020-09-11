@@ -71,7 +71,8 @@ All Reservations
             @endforeach
         @else
             <div class="alert alert-danger">
-                YOU HAVE ZERO RESERVATIONS! 
+                YOU HAVE ZERO RESERVATIONS! WHY NOT MAKE ONE
+                <a class="btn btn-success" href="{{ route('user_reserve.create') }}"> - Create</a>
             </div>
         @endif
         

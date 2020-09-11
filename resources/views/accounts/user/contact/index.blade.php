@@ -4,7 +4,7 @@
 @section('content')
 <section class="panel">
 <header class="panel-heading no-border">
-Dashboard
+Message Contacts
 </header>
 
 @if(session('CONTACT_CREATE'))
@@ -23,8 +23,8 @@ Dashboard
     <thead>
         <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
+        <th>Name Used</th>
+        <th>Email Used</th>
         <th>Subject</th>
         <th>Message</th>
         <th>Created</th>
@@ -39,7 +39,7 @@ Dashboard
             <tr>
                 <td>{{ $contact->id }}</td>
                 <td>{{ $contact->user->name }}</td>
-                <td>{{ $contact->user->name }}</td>
+                <td>{{ $contact->user->email }}</td>
                 <td>{{ $contact->subject }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>{{ $contact->created_at->diffForHumans() }}</td>
@@ -60,11 +60,18 @@ Dashboard
         @else
         <div class="alert alert-danger">
             NO CONTACTS YET! WHY NOT MAKE ONE.
+            <a class="btn btn-success" href="{{ route('user_contact.create') }}"> - Create</a>
         </div>
         @endif
 
     </tbody>
     </table>
+
+    <div class="col-sm-6">
+        <div class="col-sm-6 col-off-sm-5">
+            {{ $contacts->render() }}
+        </div>
+    </div>
 
 </section>
 @endsection

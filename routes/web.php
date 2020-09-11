@@ -111,6 +111,10 @@ Route::resource('/user/user_contact', 'UserContactController');
 Route::resource('user/user_profile', 'UserProfileController');
  // 
 
+  //TESTIMONY ROUTES
+Route::resource('user/user_testimonies', 'UserTestimonyController');
+// 
+
 
 });
 

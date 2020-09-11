@@ -62,8 +62,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Testimony</a></li>
-              <li><a class="" href="">Make Testimony</a></li>
+              <li><a class="" href="{{ route('user_testimonies.index') }}">All Testimony</a></li>
+              <li><a class="" href="{{ route('user_testimonies.create') }}">Make Testimony</a></li>
             </ul>
           </li>  
 
