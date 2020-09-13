@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Create Reservations')
 @include('includes.tinymce')
 
@@ -10,7 +10,7 @@
 Create Reservations
 </header>
     <div class="container">
-      {!! Form::open(['method'=>'POST', 'action'=>'UserReservationController@store']) !!}
+      {!! Form::open(['method'=>'POST', 'action'=>'AdminReservationController@store']) !!}
         <div class="row">
             <div class="col-sm-6">
                 

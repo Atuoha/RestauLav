@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Reservations')
 
 @section('content')
@@ -58,11 +58,26 @@ All Reservations
                     <td>{{ $reserve->created_at->diffForHumans() }}</td>
                     <td>{{ $reserve->updated_at->diffForHumans() }}</td>
         
-                    <td><a class="btn btn-success" href="{{ route('user_reserve.edit', $reserve->id) }}">Edit</a></td>
-                    <td><a class="btn btn-warning" href="{{ route('user_reserve.show', $reserve->id) }}">View</a></td>
+                    <td><a class="btn btn-success" href="{{ route('admin_reserve.edit', $reserve->id) }}">Edit</a></td>
+                    <td><a class="btn btn-warning" href="{{ route('admin_reserve.show', $reserve->id) }}">View</a></td>
                     <td>
-                        {!! Form::open(['method'=>'DELETE', 'action'=>['UserReservationController@destroy', $reserve->id] ]) !!}
-                            {!! Form::submit('Delete/Cancel', ['class'=>'btn btn-danger']) !!}
+                    @if($reserve->status == 'Active')
+                        {!! Form::open(['method'=>'PATCH', 'action'=>['AdminReservationController@update', $reserve->id] ]) !!}
+                            <input type="hidden" name="status" value="Unactive">
+                                {!! Form::submit('Unapprove', ['class'=>'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['method'=>'PATCH', 'action'=>['AdminReservationController@update', $reserve->id] ]) !!}
+                            <input type="hidden" name="status" value="Active">
+                                {!! Form::submit('Approve', ['class'=>'btn btn-info']) !!}
+                        {!! Form::close() !!}
+                    @endif
+                    </td>
+                    
+
+                    <td>
+                        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminReservationController@destroy', $reserve->id] ]) !!}
+                            {!! Form::submit('Cancel', ['class'=>'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     </td>
 
@@ -72,7 +87,7 @@ All Reservations
         @else
             <div class="alert alert-danger">
                 YOU HAVE ZERO RESERVATIONS! WHY NOT MAKE ONE
-                <a class="btn btn-success" href="{{ route('user_reserve.create') }}"> - Create</a>
+                <a class="btn btn-success" href="{{ route('admin_reserve.create') }}"> - Create</a>
             </div>
         @endif
         

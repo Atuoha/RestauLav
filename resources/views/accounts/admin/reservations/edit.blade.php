@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Edit Reservation')
 @include('includes.tinymce')
 
@@ -10,7 +10,7 @@
 Edit Reservation | {{ $reservation->table_number }}
 </header>
     <div class="container">
-      {!! Form::model($reservation, ['method'=>'PATCH', 'action'=>['UserReservationController@update', $reservation->id] ]) !!}
+      {!! Form::model($reservation, ['method'=>'PATCH', 'action'=>['AdminReservationController@update', $reservation->id] ]) !!}
         <div class="row">
             <div class="col-sm-6">
                 

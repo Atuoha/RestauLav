@@ -103,6 +103,27 @@ Route::get('admin/admin_deleted_orders/retrieve/{id}', 'AdminDeletedOrdersContro
 Route::get('admin/admin_deleted_orders/terminate/{id}', 'AdminDeletedOrdersController@terminate_deleted')->name('admin_deleted_orders.terminate');    
 // 
 
+
+
+// RESERVATION ROUTES
+Route::resource('admin/admin_reserve', 'AdminReservationController');
+// 
+
+
+// DELETED/CANCELLED  RESERVATION ROUTES
+Route::resource('admin/admin_deleted_reserve', 'AdminCancelledReservations');    
+// 
+
+    // RESTORE  RESERVATION -CANCELLED ROUTES
+Route::get('admin/admin_deleted_reserve/retrieve/{id}', 'AdminCancelledReservations@retrieve_cancelled')->name('admin_deleted_reserve.retrieve');    
+    // 
+
+    // TERMINATE  RESERVATION -CANCELLED ROUTES
+Route::get('admin/admin_deleted_reserve/terminate/{id}', 'AdminCancelledReservations@terminate_cancelled')->name('admin_deleted_reserve.terminate');    
+   // 
+
+
+
 });
 
 // END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------

@@ -65,8 +65,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Reservations</a></li>
-              <li><a class="" href="">Cancelled</a></li>
+              <li><a class="" href="{{ Route('admin_reserve.index') }}">All Reservations</a></li>
+              <li><a class="" href="{{ Route('admin_deleted_reserve.index') }}">Cancelled</a></li>
             </ul>
           </li>
 

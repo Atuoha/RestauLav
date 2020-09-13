@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Single reserve')
 
 @section('content')
@@ -69,7 +69,7 @@ Single reserve | {{ $reserve->table_number }}
                 <tr>
                 <th>Delete/Cancel Action</th>
                 <td>
-                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserReservationController@destroy', $reserve->id] ]) !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminReservationController@destroy', $reserve->id] ]) !!}
 
                         {!! Form::submit('Delete/Cancel Reservation',['class'=>'btn btn-danger']) !!}
 
@@ -79,7 +79,25 @@ Single reserve | {{ $reserve->table_number }}
 
                 <tr>
                 <th>Edit Reservation</th>
-                <td><a class="btn btn-primary" href="{{ route('user_reserve.edit', $reserve->id)}}">Edit Reservation</a></td>           
+                <td><a class="btn btn-primary" href="{{ route('admin_reserve.edit', $reserve->id)}}">Edit Reservation</a></td>           
+                </tr>
+
+                <tr>
+                <th>Status</th>
+                <td>
+                    @if($reserve->status == 'Active')
+                    {!! Form::open(['method'=>'PATCH', 'action'=>['AdminReservationController@update', $reserve->id] ]) !!}
+                        <input type="hidden" name="status" value="Unactive">
+                            {!! Form::submit('Approve', ['class'=>'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['method'=>'PATCH', 'action'=>['AdminReservationController@update', $reserve->id] ]) !!}
+                            <input type="hidden" name="status" value="Active">
+                                {!! Form::submit('Unapprove', ['class'=>'btn btn-info']) !!}
+                        {!! Form::close() !!}
+                    @endif
+                </td>
+                
                 </tr>
 
             @endif    

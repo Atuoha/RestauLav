@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Trashed Reservations')
 
 @section('content')
@@ -45,9 +45,9 @@ All Trashed Reservations | We just kept them safe for you just in case you feel 
                     <td>{{ $reserve->created_at->diffForHumans() }}</td>
                     <td>{{ $reserve->updated_at->diffForHumans() }}</td>
         
-                    <td><a class="btn btn-success" href="{{ route('deleted_reserve.show', $reserve->id) }}">View</a></td>
-                    <td><a class="btn btn-warning" href="{{ route('deleted_reserve.retrieve', $reserve->id) }}">Retrieve</a></td>
-                    <td><a class="btn btn-danger" href="{{ route('deleted_reserve.terminate', $reserve->id) }}">Terminate Permanently</a></td>
+                    <td><a class="btn btn-success" href="{{ route('admin_deleted_reserve.show', $reserve->id) }}">View</a></td>
+                    <td><a class="btn btn-warning" href="{{ route('admin_deleted_reserve.retrieve', $reserve->id) }}">Retrieve</a></td>
+                    <td><a class="btn btn-danger" href="{{ route('admin_deleted_reserve.terminate', $reserve->id) }}">Terminate Permanently</a></td>
 
                 </tr>
             @endforeach

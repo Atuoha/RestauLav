@@ -106,6 +106,20 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
 
             @endif    
 
+                <tr>
+                @if($order->status == 'Delivered')
+                    {!! Form::open(['method'=>'PATCH', 'action'=>['AdminOrdersController@update', $order->id] ]) !!}
+                        <input type="hidden" name="status" value="Not Delivered">
+                            {!! Form::submit('Not Delivrd', ['class'=>'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                @else
+                    {!! Form::open(['method'=>'PATCH', 'action'=>['AdminOrdersController@update', $order->id] ]) !!}
+                        <input type="hidden" name="status" value="Delivered">
+                            {!! Form::submit('Delivrd', ['class'=>'btn btn-info']) !!}
+                    {!! Form::close() !!}
+                @endif
+                </tr>
+
 
         <tbody>
     </table>
