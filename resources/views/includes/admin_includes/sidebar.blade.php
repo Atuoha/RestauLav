@@ -85,7 +85,7 @@
           </li>
 
           <li>
-            <a class="" href="widgets.html">
+            <a class="" href="{{ route('admin_contact.index') }}">
                           <i class="icon_genius"></i>
                           <span>Contacts</span>
                       </a>

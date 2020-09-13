@@ -1,15 +1,15 @@
 @extends('layouts.user_layouts.template')
-@section('page_name', 'Create Testimony')
+@section('page_name', 'Create Contact')
 @include('includes.tinymce')
 
 @section('content')
 <section class="panel">
 <header class="panel-heading no-border">
-Message Testimony 
+Message Contact 
 </header>
 
 <div class="container">
- {!! Form::open(['method'=>'POST', 'action'=>'UserTestimonyController@store']) !!} 
+ {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store']) !!} 
     <div class="row">
        <div class="col-sm-6">
             <div class="form group">
@@ -24,11 +24,11 @@ Message Testimony
 
        <div class="col-sm-6">
             <div class="form group">
-                {!! Form::label('job_title', 'Job Title', ['class'=>'control-label']) !!}
-                {!! Form::text('job_title', null, ['class'=>'form-control','placeholder'=>'Enter Job Title']) !!}
+                {!! Form::label('subject', 'Subject', ['class'=>'control-label']) !!}
+                {!! Form::text('subject', null, ['class'=>'form-control','placeholder'=>'Enter Subject']) !!}
             </div>
 
-            @error('job_title')
+            @error('subject')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
@@ -37,7 +37,7 @@ Message Testimony
 
     <div class="row container pull-right">
            <div class="form-group">
-               {!! Form::submit('Create Testimony', ['class'=>'btn btn-success']) !!}
+               {!! Form::submit('Create Contact', ['class'=>'btn btn-success']) !!}
            </div>
        </div>
 {!! Form::close() !!}    

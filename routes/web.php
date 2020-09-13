@@ -78,6 +78,10 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
     // 
 
 
+    // CONTACT ROUTES
+Route::resource('admin/admin_contact', 'AdminContactController');    
+    // 
+
 });
 
 // END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------
