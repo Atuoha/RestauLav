@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Single contact')
 
 @section('content')
@@ -53,7 +53,7 @@ Single contact | {{ $contact->subject }}
                 <tr>
                 <th>Delete Action</th>
                 <td>
-                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserContactController@destroy', $contact->id] ]) !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminContactController@destroy', $contact->id] ]) !!}
 
                         {!! Form::submit('Delete Contact',['class'=>'btn btn-danger']) !!}
 
@@ -63,7 +63,7 @@ Single contact | {{ $contact->subject }}
 
                 <tr>
                 <th>Edit Contact</th>
-                <td><a class="btn btn-primary" href="{{ route('user_contact.edit', $contact->id)}}">Edit Reservation</a></td>           
+                <td><a class="btn btn-primary" href="{{ route('admin_contact.edit', $contact->id)}}">Edit Reservation</a></td>           
                 </tr>
 
 

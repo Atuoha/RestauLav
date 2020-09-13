@@ -82,6 +82,10 @@ Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.
 Route::resource('admin/admin_contact', 'AdminContactController');    
     // 
 
+    // TESTIMONY ROUTES
+Route::resource('admin/admin_testimonies', 'AdminTestimonyController');  
+    //
+
 });
 
 // END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------

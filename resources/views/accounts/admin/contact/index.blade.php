@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Contacts')
 
 @section('content')
@@ -45,10 +45,10 @@ Message Contacts
                 <td>{{ $contact->created_at->diffForHumans() }}</td>
                 <td>{{ $contact->updated_at->diffForHumans() }}</td>
                
-                <td><a class="btn btn-success" href="{{ route('user_contact.edit', $contact->id) }}">Edit</a></td>
-                <td><a class="btn btn-warning" href="{{ route('user_contact.show', $contact->id) }}">View</a></td>
+                <td><a class="btn btn-success" href="{{ route('admin_contact.edit', $contact->id) }}">Edit</a></td>
+                <td><a class="btn btn-warning" href="{{ route('admin_contact.show', $contact->id) }}">View</a></td>
                 <td>
-                        {!! Form::open(['method'=>'DELETE', 'action'=>['UserContactController@destroy', $contact->id] ]) !!}
+                        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminContactController@destroy', $contact->id] ]) !!}
                             {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                         {!! Form::close() !!}
                 </td>
@@ -60,7 +60,7 @@ Message Contacts
         @else
         <div class="alert alert-danger">
             NO CONTACTS YET! WHY NOT MAKE ONE.
-            <a class="btn btn-success" href="{{ route('user_contact.create') }}"> - Create</a>
+            <a class="btn btn-success" href="{{ route('admin_create.create') }}"> - Create</a>
         </div>
         @endif
 

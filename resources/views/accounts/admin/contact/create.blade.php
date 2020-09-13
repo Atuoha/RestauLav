@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Create Contact')
 @include('includes.tinymce')
 
@@ -9,7 +9,7 @@ Message Contact
 </header>
 
 <div class="container">
- {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store']) !!} 
+ {!! Form::open(['method'=>'POST', 'action'=>'AdminContactController@store']) !!} 
     <div class="row">
        <div class="col-sm-6">
             <div class="form group">

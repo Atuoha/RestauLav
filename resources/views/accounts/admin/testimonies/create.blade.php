@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Create Testimony')
 @include('includes.tinymce')
 
@@ -9,7 +9,7 @@ Message Testimony
 </header>
 
 <div class="container">
- {!! Form::open(['method'=>'POST', 'action'=>'UserTestimonyController@store']) !!} 
+ {!! Form::open(['method'=>'POST', 'action'=>'AdminTestimonyController@store']) !!} 
     <div class="row">
        <div class="col-sm-6">
             <div class="form group">

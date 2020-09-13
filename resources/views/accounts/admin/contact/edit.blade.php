@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Edit Contact')
 @include('includes.tinymce')
 
@@ -12,7 +12,7 @@ Message Contact
 </header>
 
 <div class="container">
- {!! Form::model($contact, ['method'=>'PATCH', 'action'=>['UserContactController@update', $contact->id] ]) !!} 
+ {!! Form::model($contact, ['method'=>'PATCH', 'action'=>['AdminContactController@update', $contact->id] ]) !!} 
     <div class="row">
        <div class="col-sm-6">
             <div class="form group">

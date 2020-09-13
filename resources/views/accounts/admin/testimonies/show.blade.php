@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Single Testimony')
 
 @section('content')
@@ -53,7 +53,7 @@ Single Testimony
                 <tr>
                 <th>Delete Action</th>
                 <td>
-                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserTestimonyController@destroy', $testimony->id] ]) !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminTestimonyController@destroy', $testimony->id] ]) !!}
 
                         {!! Form::submit('Delete Testimony',['class'=>'btn btn-danger']) !!}
 
@@ -63,7 +63,7 @@ Single Testimony
 
                 <tr>
                 <th>Edit testimony</th>
-                <td><a class="btn btn-primary" href="{{ route('user_testimony.edit', $testimony->id)}}">Edit Reservation</a></td>           
+                <td><a class="btn btn-primary" href="{{ route('admin_testimonies.edit', $testimony->id)}}">Edit Reservation</a></td>           
                 </tr>
 
 

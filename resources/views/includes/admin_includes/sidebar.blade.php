@@ -93,7 +93,7 @@
 
 
           <li>
-            <a class="" href="widgets.html">
+            <a class="" href="{{ Route('admin_testimonies.index') }}">
                           <i class="icon_genius"></i>
                           <span>Testimonies</span>
                       </a>

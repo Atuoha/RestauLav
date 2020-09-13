@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Testimonies')
 
 @section('content')
@@ -45,10 +45,10 @@ Testimonies
                 <td>{{ $testimony->created_at->diffForHumans() }}</td>
                 <td>{{ $testimony->updated_at->diffForHumans() }}</td>
                
-                <td><a class="btn btn-success" href="{{ route('user_testimonies.edit', $testimony->id) }}">Edit</a></td>
-                <td><a class="btn btn-warning" href="{{ route('user_testimonies.show', $testimony->id) }}">View</a></td>
+                <td><a class="btn btn-success" href="{{ route('admin_testimonies.edit', $testimony->id) }}">Edit</a></td>
+                <td><a class="btn btn-warning" href="{{ route('admin_testimonies.show', $testimony->id) }}">View</a></td>
                 <td>
-                        {!! Form::open(['method'=>'DELETE', 'action'=>['UserTestimonyController@destroy', $testimony->id] ]) !!}
+                        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminTestimonyController@destroy', $testimony->id] ]) !!}
                             {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                         {!! Form::close() !!}
                 </td>
@@ -60,7 +60,7 @@ Testimonies
         @else
         <div class="alert alert-danger">
             NO TESTIMONIES YET! WHY NOT MAKE ONE. 
-            <a class="btn btn-success" href="{{ route('user_testimonies.create') }}"> - Create</a>
+            <a class="btn btn-success" href="{{ route('admin_testimonies.create') }}"> - Create</a>
 
         </div>
         @endif
