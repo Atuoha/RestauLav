@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'Single order')
 
 @section('content')
@@ -89,7 +89,7 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
                 <tr>
                 <th>Delete Action</th>
                 <td>
-                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserOrdersController@destroy', $order->id] ]) !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminOrdersController@destroy', $order->id] ]) !!}
 
                         {!! Form::submit('Delete Order',['class'=>'btn btn-danger']) !!}
 
@@ -100,7 +100,7 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
                 @if($order->status != 'Delivered')
                 <tr>
                 <th>Edit Reservation</th>
-                <td><a class="btn btn-primary" href="{{ route('user_orders.edit', $order->id)}}">Edit Reservation</a></td>           
+                <td><a class="btn btn-primary" href="{{ route('admin_orders.edit', $order->id)}}">Edit Reservation</a></td>           
                 </tr>
                 @endif
 

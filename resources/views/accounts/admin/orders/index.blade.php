@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Orders')
 
 @section('content')
@@ -66,12 +66,24 @@ Orders | You can only change your choice if the item has not yet been delivered
                     <td>
                         <div class="btn-group">
                             @if($order->status != 'Delivered')
-                            <a class="btn btn-success mb-2" href="{{ route('user_orders.edit', $order->id) }}">Edit</a>
+                            <a class="btn btn-success mb-2" href="{{ route('admin_orders.edit', $order->id) }}">Edit</a>
+                            @endif
+
+                            @if($order->status == 'Delivered')
+                                {!! Form::open(['method'=>'PATCH', 'action'=>['AdminOrdersController@update', $order->id] ]) !!}
+                                   <input type="hidden" name="status" value="Not Delivered">
+                                     {!! Form::submit('Not Delivrd', ['class'=>'btn btn-danger']) !!}
+                                {!! Form::close() !!}
+                            @else
+                                {!! Form::open(['method'=>'PATCH', 'action'=>['AdminOrdersController@update', $order->id] ]) !!}
+                                    <input type="hidden" name="status" value="Delivered">
+                                     {!! Form::submit('Delivrd', ['class'=>'btn btn-info']) !!}
+                                {!! Form::close() !!}
                             @endif
                             
-                            <a class="btn btn-warning" href="{{ route('user_orders.show', $order->id) }}">View</a>
+                            <a class="btn btn-warning" href="{{ route('admin_orders.show', $order->id) }}">View</a>
 
-                            {!! Form::open(['method'=>'DELETE', 'action'=>['UserOrdersController@destroy', $order->id] ]) !!}
+                            {!! Form::open(['method'=>'DELETE', 'action'=>['AdminOrdersController@destroy', $order->id] ]) !!}
                                 {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
 
@@ -82,8 +94,7 @@ Orders | You can only change your choice if the item has not yet been delivered
             @endforeach
         @else
         <div class="alert alert-danger">
-            NO ORDERS YET! WHY NOT MAKE ONE. 
-            <a class="btn btn-success" href="{{ route('user_orders.create') }}"> - Make an order</a>
+            NO ORDERS YET!. 
 
         </div>
         @endif

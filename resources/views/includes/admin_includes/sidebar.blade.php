@@ -78,8 +78,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Orders</a></li>
-              <li><a class="" href="">Trashed</a></li>
+              <li><a class="" href="{{ Route('admin_orders.index') }}">All Orders</a></li>
+              <li><a class="" href="{{ Route('admin_deleted_orders.index') }}">Trashed</a></li>
 
             </ul>
           </li>

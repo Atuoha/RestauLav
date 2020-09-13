@@ -1,4 +1,4 @@
-@extends('layouts.user_layouts.template')
+@extends('layouts.admin_layouts.template')
 @section('page_name', 'All Trashed Orders')
 
 @section('content')
@@ -56,9 +56,9 @@ Orders | The Trash Bin
                     <td>{{ $order->created_at->diffForHumans() }}</td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-warning" href="{{ route('deleted_orders.show', $order->id) }}">View</a>
-                            <a class="btn btn-success" href="{{ route('deleted_orders.retrieve', $order->id) }}">Restore</a>
-                            <a class="btn btn-danger" href="{{ route('deleted_orders.terminate', $order->id) }}">Terminate</a>
+                            <a class="btn btn-warning" href="{{ route('admin_deleted_orders.show', $order->id) }}">View</a>
+                            <a class="btn btn-success" href="{{ route('admin_deleted_orders.retrieve', $order->id) }}">Restore</a>
+                            <a class="btn btn-danger" href="{{ route('admin_deleted_orders.terminate', $order->id) }}">Terminate</a>
                         </div>
                     </td>    
       

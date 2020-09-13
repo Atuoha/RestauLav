@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Order;
+use App\Dish;
 
-class UserCancelledReservations extends Controller
+
+class AdminOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +19,8 @@ class UserCancelledReservations extends Controller
     public function index()
     {
         //
-        $user_id = Auth::user()->id;
-        $reservations = Reservation::onlyTrashed()->where('user_id', $user_id)->paginate(5);
-        return view('accounts.user.reservations.cancelled', compact('reservations'));
+        $orders = Order::paginate(5);
+        return view('accounts.admin.orders.index', compact('orders'));
     }
 
     /**
@@ -30,6 +31,9 @@ class UserCancelledReservations extends Controller
     public function create()
     {
         //
+        //  $items = Dish::pluck('name', 'id')->all();
+        $orders = Order::paginate(5);
+        return view('accounts.admin.orders.index', compact('orders'));
     }
 
     /**
@@ -40,7 +44,7 @@ class UserCancelledReservations extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //PayPalController  is taking care of this in it's payment function
     }
 
     /**
@@ -52,9 +56,9 @@ class UserCancelledReservations extends Controller
     public function show($id)
     {
         //
-        $reserve = Reservation::withTrashed()->findOrFail($id);
-        $deleted_status = "Trashed";
-        return view('accounts.user.reservations.show', compact('reserve','deleted_status'));
+        $order = Order::findOrFail($id);
+        $deleted_status = 'No Delete';
+        return view('accounts.admin.orders.show', compact('order', 'deleted_status'));
     }
 
     /**
@@ -66,6 +70,9 @@ class UserCancelledReservations extends Controller
     public function edit($id)
     {
         //
+        $order = Order::findOrFail($id);
+        $items = Dish::all();
+        return view('accounts.admin.orders.edit', compact('order', 'items'));
     }
 
     /**
@@ -78,6 +85,16 @@ class UserCancelledReservations extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        if(trim($request->item) == ''){
+            $input  = $request->except('item');
+        }else{
+            $input = $request->all();
+        }
+        $order = Order::findOrFail($id);
+        Session::flash('ORDER_UPDATE', 'Order for '. $order->item .' has been updated successfully');
+        $order->update($input);
+        return redirect('admin/admin_orders');
     }
 
     /**
@@ -89,21 +106,9 @@ class UserCancelledReservations extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function retrieve_cancelled($id){
-
-       $reserve = Reservation::withTrashed()->findOrFail($id);
-       $reserve->restore();
-       Session::flash('RESERVATION_RETRIEVE', 'Your reservation for '.$reserve->table_number .' has been retrieved');
-       return redirect('user/user_reserve');
-    }
-
-    public function terminate_cancelled($id){
-        
-        $reserve = Reservation::withTrashed()->findOrFail($id);
-       Session::flash('RESERVATION_DELETE', 'Your reservation for '.$reserve->table_number .' has been terminated permanently');
-       $reserve->forceDelete();
-       return redirect('user/deleted_reserve');
+        $order = Order::findOrFail($id);
+        Session::flash('ORDER_DELETE', 'Order for '. $order->item .' has been deleted successfully');
+        $order->delete();
+        return redirect('admin/admin_orders');
     }
 }

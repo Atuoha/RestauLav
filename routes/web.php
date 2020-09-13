@@ -86,6 +86,23 @@ Route::resource('admin/admin_contact', 'AdminContactController');
 Route::resource('admin/admin_testimonies', 'AdminTestimonyController');  
     //
 
+    // ORDERS ROUTES
+Route::resource('admin/admin_orders', 'AdminOrdersController');    
+    //
+
+
+    // DELETED/CANCELLED  ORDERS ROUTES
+Route::resource('admin/admin_deleted_orders', 'AdminDeletedOrdersController');    
+// 
+
+// RESTORE  ORDERS -CANCELLED ROUTES
+Route::get('admin/admin_deleted_orders/retrieve/{id}', 'AdminDeletedOrdersController@retrieve_deleted')->name('admin_deleted_orders.retrieve');    
+// 
+
+// TERMINATE  ORDERS -CANCELLED ROUTES
+Route::get('admin/admin_deleted_orders/terminate/{id}', 'AdminDeletedOrdersController@terminate_deleted')->name('admin_deleted_orders.terminate');    
+// 
+
 });
 
 // END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------

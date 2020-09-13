@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Reservation;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class UserCancelledReservations extends Controller
+class AdminDeletedOrdersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
         //
-        $user_id = Auth::user()->id;
-        $reservations = Reservation::onlyTrashed()->where('user_id', $user_id)->paginate(5);
-        return view('accounts.user.reservations.cancelled', compact('reservations'));
+        $orders = Order::onlyTrashed()->paginate(5);
+        return view('accounts.admin.orders.deleted_orders', compact('orders'));
     }
 
     /**
@@ -52,9 +47,9 @@ class UserCancelledReservations extends Controller
     public function show($id)
     {
         //
-        $reserve = Reservation::withTrashed()->findOrFail($id);
+        $order = Order::withTrashed()->findOrFail($id);
         $deleted_status = "Trashed";
-        return view('accounts.user.reservations.show', compact('reserve','deleted_status'));
+        return view('accounts.admin.orders.show', compact('order','deleted_status'));
     }
 
     /**
@@ -91,19 +86,20 @@ class UserCancelledReservations extends Controller
         //
     }
 
-    public function retrieve_cancelled($id){
+    public function retrieve_deleted($id){
 
-       $reserve = Reservation::withTrashed()->findOrFail($id);
-       $reserve->restore();
-       Session::flash('RESERVATION_RETRIEVE', 'Your reservation for '.$reserve->table_number .' has been retrieved');
-       return redirect('user/user_reserve');
+       $order = Order::withTrashed()->findOrFail($id);
+       $order->restore();
+       Session::flash('ORDER_RETRIEVE', 'Order for '.$order->item .' has been retrieved');
+       return redirect('admin/admin_orders');
     }
 
-    public function terminate_cancelled($id){
+    public function terminate_deleted($id){
         
-        $reserve = Reservation::withTrashed()->findOrFail($id);
-       Session::flash('RESERVATION_DELETE', 'Your reservation for '.$reserve->table_number .' has been terminated permanently');
-       $reserve->forceDelete();
-       return redirect('user/deleted_reserve');
+        $order = Order::withTrashed()->findOrFail($id);
+       Session::flash('ORDER_DELETE', 'Order for '.$order->item .' has been terminated permanently');
+       $order->forceDelete();
+       return redirect('admin/admin_deleted_orders');
     }
 }
+

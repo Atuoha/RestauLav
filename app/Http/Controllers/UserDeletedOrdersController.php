@@ -14,7 +14,7 @@ class UserDeletedOrdersController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $orders = Order::onlyTrashed()->paginate(5);
+        $orders = Order::onlyTrashed()->where('user_id', $user_id)->paginate(5);
         return view('accounts.user.orders.deleted_orders', compact('orders'));
     }
 
