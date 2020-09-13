@@ -1,5 +1,5 @@
 @extends('layouts.user_layouts.template')
-@section('page_name', 'Dashboard')
+@section('page_name', 'USER Dashboard')
 
 @section('content')
     

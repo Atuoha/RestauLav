@@ -36,7 +36,7 @@ Auth::routes();
 Route::group(['middleware'=>'admin_only'], function(){
 
     // ADMIN DASHBOARD ROUTE
-Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
+Route::get('/admin/dashboard', 'AdminDashboardController@index')->name('admin_dashboard');
     // 
 
     // ADMIN USER ROUTES
@@ -72,10 +72,8 @@ Route::get('/deleted/terminate/{id}', 'DeletedDishController@terminate_dishes')-
     // 
 
     // PROFILE ROUTES 
-Route::get('/admin/profile', 'AdminUserController@profile')->name('admin.profile');
-
-Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.profile.edit');
-    // 
+Route::resource('/admin/admin_profile', 'AdminProfileController');
+ // 
 
 
     // CONTACT ROUTES

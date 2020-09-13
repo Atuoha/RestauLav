@@ -71,7 +71,7 @@ Profile | {{ $profile->name }}
 
             <tr>
             <th>Edit profile</th>
-            <td><a class="btn btn-primary" href="{{ route('admin.profile.edit', $profile->id)}}">Edit profile</a></td>
+            <td><a class="btn btn-primary" href="{{ route('admin_profile.edit', $profile->id)}}">Edit profile</a></td>
             </tr>
 
 

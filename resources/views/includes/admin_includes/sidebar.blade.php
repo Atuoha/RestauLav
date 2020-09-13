@@ -11,7 +11,7 @@
           </li>
 
           <li>
-            <a class="" href="{{ route('admin.profile') }}">
+            <a class="" href="{{ route('admin_profile.index') }}">
                           <i class="icon_profile"></i>
                           <span>Profile</span>
                       </a>

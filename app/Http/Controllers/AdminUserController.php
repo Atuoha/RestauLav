@@ -94,6 +94,8 @@ class AdminUserController extends Controller
         return view('accounts.admin.admins.edit', compact('user', 'role') );
     }
 
+  
+
     /**
      * Update the specified resource in storage.
      *
@@ -101,6 +103,10 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    
+
+
     public function update(Request $request, $id)
     {
         //
@@ -131,7 +137,7 @@ class AdminUserController extends Controller
             $file->move('images',$name);  //Moving photo 
 
             if($user->photo != ''){
-                unlink(public_path().$user->photo->name);  //Deleting old photo
+               // unlink(public_path().$user->photo->name);  //Deleting old photo
                 Photo::findOrFail($user->photo)->delete();
 
             }
@@ -149,6 +155,8 @@ class AdminUserController extends Controller
         //redirect to users index page
         return redirect('/admin/users');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
