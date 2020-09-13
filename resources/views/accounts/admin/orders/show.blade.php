@@ -7,7 +7,7 @@
 
 <section class="panel">
 <header class="panel-heading no-border">
-Single order | {{ $order->item }} | | You can only change your choice if the item has not yet been delivered
+Single order | {{ $order->item }}
 </header>
 
 <div class="container">
@@ -26,7 +26,7 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
 
                  <tr>
                     <th>Email Used</th>
-                    <td>{{ $order->user->email }}</td>
+                    <td>{{ $order->email }}</td>
                 </tr> 
 
                 <tr>
@@ -50,13 +50,8 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
                 </tr> 
 
                 <tr>
-                    <th>Price</th>
-                    <td>${{ $order->price }}</td>
-                </tr> 
-
-                <tr>
                     <th>Total Price</th>
-                    <td>${{ $order->total_price }}</td>
+                    <td>{{ $order->address }}</td>
                 </tr> 
             
                 <tr>
@@ -87,22 +82,20 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
             
             @if($deleted_status == 'No Delete')    
                 <tr>
-                <th>Delete Action</th>
+                <th>Delete/Cancel Action</th>
                 <td>
-                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserOrdersController@destroy', $order->id] ]) !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserReservationController@destroy', $order->id] ]) !!}
 
-                        {!! Form::submit('Delete Order',['class'=>'btn btn-danger']) !!}
+                        {!! Form::submit('Delete/Cancel Reservation',['class'=>'btn btn-danger']) !!}
 
                     {!! Form::close() !!}
                 </td>
                 </tr>  
 
-                @if($order->status != 'Delivered')
                 <tr>
                 <th>Edit Reservation</th>
-                <td><a class="btn btn-primary" href="{{ route('user_orders.edit', $order->id)}}">Edit Reservation</a></td>           
+                <td><a class="btn btn-primary" href="{{ route('user_order.edit', $order->id)}}">Edit Reservation</a></td>           
                 </tr>
-                @endif
 
             @endif    
 

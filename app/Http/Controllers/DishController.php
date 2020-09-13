@@ -88,7 +88,10 @@ class DishController extends Controller
     {
         //
         $dish = Dish::withTrashed()->findOrFail($id);
-        return view('accounts.admin.dishes.edit', compact('dish'));
+        $categories = Category::pluck('name', 'id')->all();
+        // $users = User::pluck('name','id')->where('role_id', '3')->all();
+        $users = User::pluck('name','id')->all();
+        return view('accounts.admin.dishes.edit', compact('dish', 'users', 'categories'));
     }
 
     /**

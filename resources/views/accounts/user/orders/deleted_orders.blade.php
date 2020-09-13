@@ -1,34 +1,25 @@
 @extends('layouts.user_layouts.template')
-@section('page_name', 'All Orders')
+@section('page_name', 'All Trashed Orders')
 
 @section('content')
 <section class="panel">
 <header class="panel-heading no-border">
-Orders | You can only change your choice if the item has not yet been delivered
+Orders | The Trash Bin
 </header>
 
-@if(session('ORDER_CREATE'))
-    <div class="alert alert-success">{{ session('ORDER_CREATE') }}</div>
-@endif
 
 @if(session('ORDER_DELETE'))
     <div class="alert alert-success">{{ session('ORDER_DELETE') }}</div>
 @endif
 
-@if(session('ORDER_UPDATE'))
-    <div class="alert alert-success">{{ session('ORDER_UPDATE') }}</div>
-@endif
 
-@if(session('ORDER_RETRIEVE'))
-    <div class="alert alert-success">{{ session('ORDER_RETRIEVE') }}</div>
-@endif
 
 <table class="table table-bordered table-responsive">
     <thead>
         <tr>
             <th>#</th>
             <th>Name Used</th>
-            <th>Email</th>
+            <th>Email Used</th>
             <th>Contact</th>
             <th>Address</th>
             <th>Item</th>
@@ -65,26 +56,18 @@ Orders | You can only change your choice if the item has not yet been delivered
                     <td>{{ $order->created_at->diffForHumans() }}</td>
                     <td>
                         <div class="btn-group">
-                            @if($order->status != 'Delivered')
-                            <a class="btn btn-success mb-2" href="{{ route('user_orders.edit', $order->id) }}">Edit</a>
-                            @endif
-                            
-                            <a class="btn btn-warning" href="{{ route('user_orders.show', $order->id) }}">View</a>
-
-                            {!! Form::open(['method'=>'DELETE', 'action'=>['UserOrdersController@destroy', $order->id] ]) !!}
-                                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                            {!! Form::close() !!}
-
-                         </div>
-                    </td>
-               
+                            <a class="btn btn-warning" href="{{ route('deleted_orders.show', $order->id) }}">View</a>
+                            <a class="btn btn-success" href="{{ route('deleted_orders.retrieve', $order->id) }}">Restore</a>
+                            <a class="btn btn-danger" href="{{ route('deleted_orders.terminate', $order->id) }}">Terminate</a>
+                        </div>
+                    </td>    
+      
+                    
                 </tr>
             @endforeach
         @else
         <div class="alert alert-danger">
-            NO ORDERS YET! WHY NOT MAKE ONE. 
-            <a class="btn btn-success" href="{{ route('user_orders.create') }}"> - Make an order</a>
-
+             YOU HAVE ZERO TRASHED ORDERS!  
         </div>
         @endif
     </tbody>

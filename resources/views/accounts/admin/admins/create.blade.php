@@ -66,17 +66,24 @@ Add Users
 
         <div class="Form-group">
             {!! Form::label('photo_id', 'Picture', ['class'=>'control-label']) !!}
-            {!! Form::file('photo_id',['class'=> 'form-control', 'accept'=>'image*/'])!!}
+            {!! Form::file('photo_id',['class'=> 'form-control', 'accept'=>'image/*', 'id'=>'inpFile'])!!}
 
             @error('photo_id')
             <div class="alert alert-danger">{{ $message }}</div>
            @enderror
         </div>
 
+        <div class="image-preview pull-right" id="imagePreview">
+            <img width="100" class="img-circle image-preview__image" src="/images/default.png" alt=""> 
+            <span class="image-preview__default-text"> </span>
+        </div>
+
         <!-- ADDITIONAL OPTIONAL FIELD TRIGGER -->
+        <div class="row">
             <label class="checkbox">
                 <input type="checkbox" id="checkbox" value="remember-me"> Are you registering a staff?
             </label>
+        </div>
         <!--  -->
 
 
@@ -129,6 +136,33 @@ Add Users
                 $('#job_field').fadeIn('slow');
             }else{
                 $('#job_field').fadeOut('slow');
+            }
+        })
+
+
+        // Script for previewing image before upload
+        const inpFile = document.getElementById('inpFile');
+        const previewContainer = document.getElementById('imagePreview');
+        const previewImage = document.querySelector('.image-preview__image');
+        const previewDefault = document.querySelector('.image-preview__default-text');
+
+        inpFile.addEventListener('change',function(){
+            const file = this.files[0];
+
+            if(file){
+                const reader = new FileReader();
+                previewDefault.style.display = 'none';
+                previewImage.style.display = 'block';
+
+                reader.addEventListener('load',function(){
+                    previewImage.setAttribute('src',this.result);
+                    previewImage.style.width = '130px';
+                });
+                reader.readAsDataURL(file)
+            }else{
+                previewDefault.style.display = 'block';
+                previewImage.style.display = 'none';
+                previewImage.setAttribute('src',"");
             }
         })
     </script>

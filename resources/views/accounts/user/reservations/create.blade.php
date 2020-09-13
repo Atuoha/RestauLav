@@ -35,8 +35,7 @@ Create Reservations
 
             <div class="col-sm-6">
                 <div class="form-group dates-wrap">
-                        <label class="control-label">Date Of Reservation</label>
-                        <label class="control-label">Date Of Reservation</label>
+                        {!! Form::label('date', 'Date of Reservation', ['class'=>'control-label']) !!}
                         {!! Form::text('date', null, ['class'=>'form-control dates','id'=>'datepicker2']) !!}                     
                        										
                     @error('date')
@@ -45,12 +44,9 @@ Create Reservations
                 </div>	
                 
                 <div class="form-group bootstrap-timepicker timepicker">
-                    <label class="control-label">Time Of Reservation</label>
+                        {!! Form::label('time', 'Time of Reservation', ['class'=>'control-label']) !!}
                         {!! Form::text('time', null, ['class'=>'form-control','id'=>'timepicker1','data-provide'=>'timepicker']) !!}                     
-                        <div class="input-group-prepend">
-                            <span  class="input-group-addon input-group-text"><span class="fa fa-clock-o"></span></span>
-                        </div>
-
+                        
                     @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

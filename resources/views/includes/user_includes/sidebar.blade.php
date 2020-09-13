@@ -26,25 +26,27 @@
             <ul class="sub">
               <li><a class="" href="{{ route('user_reserve.index') }}">All Reservations</a></li>
               <li><a class="" href="{{ route('user_reserve.create') }}">Make Reservations</a></li>
-              <li><a class="" href="{{ route('deleted_reserve.index') }}">Cancelled</a></li>
+              <li><a class="" href="{{ route('deleted_reserve.index') }}">Trashed</a></li>
             </ul>
           </li>
 
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Order</span>
+                          <i class="icon_desktop"></i>
+                          <span>Orders</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="">All Order</a></li>
-              <li><a class="" href="">Make an Order</a></li>
+              <li><a class="" href="{{ route('user_orders.index') }}">All Orders</a></li>
+              <li><a class="" href="{{ route('user_orders.create') }}">Make an Order</a></li>
+              <li><a class="" href="{{ route('deleted_orders.index') }}">Trashed</a></li>
+
             </ul>
           </li>
 
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_genuis"></i>
+                          <i class="icon_genius"></i>
                           <span>Contacts</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
@@ -57,7 +59,7 @@
 
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_genuis"></i>
+                          <i class="icon_genius"></i>
                           <span>Testimony</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>

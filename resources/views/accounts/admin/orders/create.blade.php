@@ -2,16 +2,15 @@
 @section('page_name', 'Make Order')
 @include('includes.tinymce')
 
-
 @section('content')
     
 
 <section class="panel">
 <header class="panel-heading no-border">
-Make Order(This version supports just a single item) | We don't accept Payby-Delivery Policy | Payment is through PayPal
+Make Order for an item  | We accept Payby-Deleivery Policy
 </header>
-<div class="container">
-      {!! Form::open(['method'=>'POST', 'action'=>'PayPalController@payment']) !!}
+    <div class="container">
+      {!! Form::open(['method'=>'POST', 'action'=>'UserReservationController@store']) !!}
         <div class="row">
             <div class="col-sm-6">
                 
@@ -35,26 +34,12 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
 
                 <div class="form-group">
                     {!! Form::label('item', 'Item', ['class'=>'control-label']) !!}
-
-                <select class="form-control" id="item" name="item">
-                    <option >Select  Item</option>
-                    @foreach($items as $item)
-                    <option id="{{$item->price}}" class="opt-item"  value="{{$item->name}}">{{$item->name}}</option>
-                    @endforeach
-
-                    
-                    @error('item')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </select>
-
+                    {!! Form::select('item', [''=>'Select Item'] + $items, null, ['class'=>'form-control']) !!}
 
                     @error('item')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <p id="sing_price"></p>
 
                 <div class="form-group">
                     {!! Form::label('quantity', 'Quantity', ['class'=>'control-label']) !!}
@@ -67,12 +52,7 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
 
                 <div class="form-group">
                     {!! Form::label('total_price', 'Total Price', ['class'=>'control-label']) !!}
-                    {!! Form::number('display_total', null, ['class'=>'total_price form-control','placeholder'=>'Total Price','disabled']) !!}
-
-                    <!-- These  fields store price and total price -->
-                    {!! Form::hidden('price',null, ['class'=>'price control-label']) !!}
-                    {!! Form::hidden('total_price',null, ['class'=>'total_price control-label']) !!}
-                    <!--  -->
+                    {!! Form::number('total_price', null, ['class'=>'form-control','placeholder'=>'Total Price','read-only']) !!}
 
                     @error('total_price')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -83,7 +63,7 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
 
             <div class="col-sm-6">
                 <div class="form-group dates-wrap">
-                        {!! Form::label('date', 'Date of Delivery', ['class'=>'control-label']) !!}
+                        <label class="control-label">Date Of Reservation</label>
                         {!! Form::text('date', null, ['class'=>'form-control dates','id'=>'datepicker2']) !!}                     
                        										
                     @error('date')
@@ -92,11 +72,11 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
                 </div>	
                 
                 <div class="form-group bootstrap-timepicker timepicker">
-                         {!! Form::label('time', 'Time of Delivery', ['class'=>'control-label']) !!}
+                    <label class="control-label">Time Of Reservation</label>
                         {!! Form::text('time', null, ['class'=>'form-control','id'=>'timepicker1','data-provide'=>'timepicker']) !!}                     
                        
 
-                    @error('time')
+                    @error('date')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -110,8 +90,6 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                NB: Use <b>sb-mn8sy3193350@personal.example.com</b> as PayPal Email <br>
-                and <b>l.(ON7A#</b> as Password so as to test it
 
             </div>
         </div>
@@ -119,8 +97,7 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
         <div class="container">
             <div class="row">
                 <div class="form-group">
-                    {!! Form::submit('Make Order | Pay Through PayPal', ['class'=>'btn btn-success']) !!}
-                  <img src="/images/cards.png" width="200" class="img-responsive img-rounded"  alt="">
+                    {!! Form::submit('Create Reservation', ['class'=>'btn btn-success']) !!}
                 </div>
             </div>
 
@@ -129,41 +106,12 @@ Make Order(This version supports just a single item) | We don't accept Payby-Del
 </section>
 
 
-
+<!-- Activators -->
 <script>
     $(document).ready(function(){
-        // Activators 
         $( "#datepicker2" ).datepicker();
         $('#timepicker1').timepicker();
 
-
-        // Pulling Total Price
-        let price;
-        let quantity;
-        let total;
-         $('#item').blur(function(){
-             price =  $('.opt-item').attr('id');
-             $('#sing_price').html(`Price: $${price}`)
-             $('.price').attr('value',`${price}`);
-             console.log(`Price: ${price}`)
-
-             total = price * quantity
-             $('.total_price').attr('value',`${total}.00`);
-         }) 
-
-         $('#quantity').keyup(function(e){
-            quantity = e.target.value
-             total = price * quantity
-             console.log(`Quantity: ${quantity}`)
-             console.log(`Total: ${total}`)
-
-             $('.total_price').attr('value',`${total}.00`);
-         })
-
-         if(quantity != '' && price != ''){
-            total = price * quantity
-            $('.total_price').attr('value',`${total}.00`);
-         }
     })
 </script>
 @endsection

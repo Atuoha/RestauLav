@@ -165,7 +165,8 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelfilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        
+
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
 
         /*
          * Package Service Providers...

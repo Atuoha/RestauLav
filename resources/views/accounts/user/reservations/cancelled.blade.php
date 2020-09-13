@@ -1,5 +1,5 @@
 @extends('layouts.user_layouts.template')
-@section('page_name', 'All Cancelled Reservations')
+@section('page_name', 'All Trashed Reservations')
 
 @section('content')
  
@@ -10,9 +10,9 @@
 
 <section class="panel">
 <header class="panel-heading no-border">
-All Cancelled Reservations | We just kept them safe for you just in case you feel like...
+All Trashed Reservations | We just kept them safe for you just in case you feel like...
 </header>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
     <thead>
         <tr>
         <th>#</th>

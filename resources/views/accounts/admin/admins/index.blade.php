@@ -19,7 +19,7 @@
 <header class="panel-heading no-border">
 All Registered Users
 </header>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
     <thead>
         <tr>
         <th>#</th>

@@ -33,7 +33,7 @@ All Media
     <div class="col-sm-6">
         All Media
       
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
     <thead>
         <tr>
         <th>#</th>

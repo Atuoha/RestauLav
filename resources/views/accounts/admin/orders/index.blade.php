@@ -4,7 +4,7 @@
 @section('content')
 <section class="panel">
 <header class="panel-heading no-border">
-Orders | You can only change your choice if the item has not yet been delivered
+Orders
 </header>
 
 @if(session('ORDER_CREATE'))
@@ -19,21 +19,16 @@ Orders | You can only change your choice if the item has not yet been delivered
     <div class="alert alert-success">{{ session('ORDER_UPDATE') }}</div>
 @endif
 
-@if(session('ORDER_RETRIEVE'))
-    <div class="alert alert-success">{{ session('ORDER_RETRIEVE') }}</div>
-@endif
-
 <table class="table table-bordered table-responsive">
     <thead>
         <tr>
             <th>#</th>
             <th>Name Used</th>
-            <th>Email</th>
-            <th>Contact</th>
-            <th>Address</th>
+            <th>Email Used</th>
+            <th>Contact Used</th>
+            <th>Address Used</th>
             <th>Item</th>
-            <th>Quant</th>
-            <th>Price</th>
+            <th>Quantity</th>
             <th>Total Price</th>
             <th>Time</th>
             <th>Date</th>
@@ -51,33 +46,25 @@ Orders | You can only change your choice if the item has not yet been delivered
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->user->email }}</td>
-                    <td>{{ $order->contact }}</td>
+                    <td>{{ $order->phone }}</td>
                     <td>{{ $order->address }}</td>
                     <td>{{ $order->item }}</td>
                     <td>{{ $order->quantity }}</td>
-                    <td>${{ $order->price }}</td>
-                    <td>${{ $order->total_price }}</td>
+                    <td>{{ $order->price }}</td>
                     <td>{{ $order->time }}</td>
                     <td>{{ $order->date }}</td>
                     <td>{{ $order->message }}</td>
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
-                    <td>
-                        <div class="btn-group">
-                            @if($order->status != 'Delivered')
-                            <a class="btn btn-success mb-2" href="{{ route('user_orders.edit', $order->id) }}">Edit</a>
-                            @endif
-                            
-                            <a class="btn btn-warning" href="{{ route('user_orders.show', $order->id) }}">View</a>
 
+                    <td><a class="btn btn-success" href="{{ route('user_orders.edit', $order->id) }}">Edit</a></td>
+                    <td><a class="btn btn-warning" href="{{ route('user_orders.show', $order->id) }}">View</a></td>
+                    <td>
                             {!! Form::open(['method'=>'DELETE', 'action'=>['UserOrdersController@destroy', $order->id] ]) !!}
                                 {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
-
-                         </div>
                     </td>
-               
                 </tr>
             @endforeach
         @else

@@ -3,25 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
-use App\User;
-use App\Photo;
 
-class UserProfileController extends Controller
+class UserDeletedOrdersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
         //
         $user_id = Auth::user()->id;
-        $profile = User::findOrFail($user_id);
-        return view('accounts.user.profile.index', compact('profile'));
+        $orders = Order::onlyTrashed()->paginate(5);
+        return view('accounts.user.orders.deleted_orders', compact('orders'));
     }
 
     /**
@@ -54,6 +48,9 @@ class UserProfileController extends Controller
     public function show($id)
     {
         //
+        $order = Order::withTrashed()->findOrFail($id);
+        $deleted_status = "Trashed";
+        return view('accounts.user.orders.show', compact('order','deleted_status'));
     }
 
     /**
@@ -65,8 +62,6 @@ class UserProfileController extends Controller
     public function edit($id)
     {
         //
-        $user = User::findOrFail($id);
-        return view('accounts.user.profile.edit', compact('user'));
     }
 
     /**
@@ -79,36 +74,6 @@ class UserProfileController extends Controller
     public function update(Request $request, $id)
     {
         //
-
-        $request->validate([
-            'name'=> 'bail | required | min:10',
-            'email'=> 'required',
-        ]);
-
-        $user = User::findOrFail($id);
-        if(trim($request->password) == ''){
-            $input = $request->except('password');
-        }else{
-            $input = $request->all();
-            $input['password'] = Hash::make($request->password);
-        }
-
-        if($file = $request->file('photo_id')){
-            $name = time() . $file->getClientOriginalName();
-            $photo = Photo::create(['name'=>$name]);
-
-            if($user->photo != ''){
-                unlink(public_path() . $user->photo->name);
-                Photo::findOrFail($user->photo->id)->delete();
-            }
-
-            $file->move('images', $name);
-            $input['photo_id'] = $photo->id;
-        }
-
-        $user->update($input);
-        Session::flash('USER_UPDATE', 'Profile has been successfully updated');
-        return redirect('user/user_profile');
     }
 
     /**
@@ -121,4 +86,21 @@ class UserProfileController extends Controller
     {
         //
     }
+
+    public function retrieve_deleted($id){
+
+       $order = Order::withTrashed()->findOrFail($id);
+       $order->restore();
+       Session::flash('ORDER_RETRIEVE', 'Your order for '.$order->item .' has been retrieved');
+       return redirect('user/user_orders');
+    }
+
+    public function terminate_deleted($id){
+        
+        $order = Order::withTrashed()->findOrFail($id);
+       Session::flash('ORDER_DELETE', 'Your order for '.$order->item .' has been terminated permanently');
+       $order->forceDelete();
+       return redirect('user/deleted_orders');
+    }
 }
+

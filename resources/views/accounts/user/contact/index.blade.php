@@ -19,7 +19,7 @@ Message Contacts
     <div class="alert alert-success">{{ session('CONTACT_UPDATE') }}</div>
 @endif
 
-<table class="table table-bordered">
+<table class="table table-bordered table-responsive">
     <thead>
         <tr>
         <th>#</th>

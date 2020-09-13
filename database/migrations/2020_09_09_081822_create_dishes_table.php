@@ -18,12 +18,19 @@ class CreateDishesTable extends Migration
             $table->string('name')->unique();
             $table->text('content');
             $table->string('price');
-            $table->integer('category_id');
+            $table->bigInteger('category_id');
             $table->integer('photo_id');
             $table->string('food_plan');
-            $table->integer('user_id');
+            $table->bigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('photo_id')->references('id')->on('photos')->onDelete('cascade');
+
+
         });
     }
 

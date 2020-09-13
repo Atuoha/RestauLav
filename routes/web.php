@@ -24,9 +24,16 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware'=>'admin_only'], function(){
 
-// ADMIN ROUTES 
+
+
+
+
+
+
+
+// ADMIN ROUTES --------------------------------------------------------------------------------------------
+Route::group(['middleware'=>'admin_only'], function(){
 
     // ADMIN DASHBOARD ROUTE
 Route::view('/admin/dashboard', 'accounts.admin.index')->name('admin_dashboard');
@@ -70,37 +77,52 @@ Route::get('/admin/profile', 'AdminUserController@profile')->name('admin.profile
 Route::get('/admin/profile/edit/{id}', 'AdminUserController@edit')->name('admin.profile.edit');
     // 
 
-// END OF ADMIN ROUTES
+
 });
 
+// END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// USER ROUTES -------------------------------------------------------------------------------------------------------------------
 Route::group(['middleware'=>'admin_user'], function(){
 
-// USER ROUTES
+
 
     // USER DASHBOARD
-Route::view('/user/dashboard', 'accounts.user.index')->name('user_dashboard');    
+Route::get('/user/dashboard', 'UserDashboardController@index')->name('user_dashboard');    
     // 
 
     // RESERVATION ROUTES
 Route::resource('user/user_reserve', 'UserReservationController');
     //
 
-    // DELETED/CANCELLED ROUTES
-Route::resource('user/deleted_reserve', 'CancelledReservations');    
+    // DELETED/CANCELLED  RESERVATION ROUTES
+Route::resource('user/deleted_reserve', 'UserCancelledReservations');    
     // 
 
-    // RESTORE -CANCELLED ROUTES
-Route::get('user/deleted_reserve/retrieve/{id}', 'CancelledReservations@retrieve_cancelled')->name('deleted_reserve.retrieve');    
+    // RESTORE  RESERVATION -CANCELLED ROUTES
+Route::get('user/deleted_reserve/retrieve/{id}', 'UserCancelledReservations@retrieve_cancelled')->name('deleted_reserve.retrieve');    
     // 
 
-    // TERMINATE -CANCELLED ROUTES
-Route::get('user/deleted_reserve/terminate/{id}', 'CancelledReservations@terminate_cancelled')->name('deleted_reserve.terminate');    
+    // TERMINATE  RESERVATION -CANCELLED ROUTES
+Route::get('user/deleted_reserve/terminate/{id}', 'UserCancelledReservations@terminate_cancelled')->name('deleted_reserve.terminate');    
    // 
 
    // CONTACT ROUTES
@@ -113,11 +135,37 @@ Route::resource('user/user_profile', 'UserProfileController');
 
   //TESTIMONY ROUTES
 Route::resource('user/user_testimonies', 'UserTestimonyController');
+ // 
+
+ //ORDERS ROUTES
+Route::resource('user/user_orders', 'UserOrdersController'); 
+ //  
+
+    // DELETED/CANCELLED  ORDERS ROUTES
+Route::resource('user/deleted_orders', 'UserDeletedOrdersController');    
+// 
+
+// RESTORE  ORDERS -CANCELLED ROUTES
+Route::get('user/deleted_orders/retrieve/{id}', 'UserDeletedOrdersController@retrieve_deleted')->name('deleted_orders.retrieve');    
+// 
+
+// TERMINATE  ORDERS -CANCELLED ROUTES
+Route::get('user/deleted_orders/terminate/{id}', 'UserDeletedOrdersController@terminate_deleted')->name('deleted_orders.terminate');    
 // 
 
 
-});
+ //PAYPAL ROUTES ------------------------------------------------------------------------------
+ Route::post('payment', 'PayPalController@payment')->name('payment');
+ Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
+ Route::get('payment/success', 'PayPalController@success')->name('payment.success'); 
+ Route::view('payment/status/success', 'accounts.user.orders.success');
+ Route::view('payment/status/failure', 'accounts.user.orders.failure');
+ Route::view('/payment/status/cancel', 'accounts.user.orders.cancel_payment');
+ //
+ 
 
+});
+// END OF USER ROUTES ------------------------------------------------------------------------------------------------------------------------
  
 
 

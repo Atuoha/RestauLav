@@ -31,7 +31,7 @@ Single reserve | {{ $reserve->table_number }}
 
                 <tr>
                     <th>Contact Used</th>
-                    <td>{{ $reserve->email }}</td>
+                    <td>{{ $reserve->contact }}</td>
                 </tr> 
                 
                 <tr>

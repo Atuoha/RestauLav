@@ -18,7 +18,7 @@
 All Deleted Dishes
 </header>
 <div class="container">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
     <thead>
         <tr>
         <th>#</th>
