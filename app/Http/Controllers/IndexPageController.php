@@ -22,7 +22,7 @@ class IndexPageController extends Controller
         $categories = Category::all();
         $special_dishes = Dish::where('food_plan', 'special')->get();
         $staffs = User::where('role_id', 3)->get();
-        $photos = Photo::all();
+        $photos = Photo::paginate(12);
 
 
 
