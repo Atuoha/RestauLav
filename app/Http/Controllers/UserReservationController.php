@@ -64,7 +64,7 @@ class UserReservationController extends Controller
 
         Reservation::create($input);
         Session::flash('RESERVATION_CREATE', 'Your reservation for '. $request->table_number.' has been created');
-        return redirect('user/user_reserve');
+        return redirect()->back();
     }
 
     /**

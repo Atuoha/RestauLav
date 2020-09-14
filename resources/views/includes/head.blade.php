@@ -63,7 +63,13 @@
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#chefs">Chefs</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li class="book-a-table text-center"><a href="#book-a-table">Book a table</a></li>
+          <li><a href="#book-a-table">Book a Table</a></li>
+          
+          @if(Auth::check())
+           <li class="book-a-table text-center"><a href="/login">{{ Auth::user()->name }}</a></li>
+          @else
+           <li class="book-a-table text-center"><a href="/login">Login</a></li>
+          @endif
         </ul>
       </nav><!-- .nav-menu -->
 

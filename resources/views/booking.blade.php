@@ -6,47 +6,66 @@
         <div class="section-title">
           <h2>Reservation</h2>
           <p>Book a Table</p>
+
+@if(session('RESERVATION_CREATE'))
+    <div class="alert alert-success">{{ session('RESERVATION_CREATE') }}</div>
+@endif
+
+        </div>
+  @if(Auth::check())
+      {!! Form::open(['method'=>'POST', 'action'=>'UserReservationController@store',  'data-aos'=>'fade-up', 'data-aos'=>'100']) !!}
+        <div class="form-row">
+
+          <div class="col-lg-6 col-md-6 form-group">
+            {!! Form::text('contact', null, ['class'=>'form-control', 'placeholder'=>'Contact Number']) !!}
+
+            @error('contact')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="col-lg-6 col-md-6 form-group">
+            {!! Form::text('date', null, ['class'=>'form-control', 'placeholder'=>'Date']) !!}
+
+            @error('date')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="col-lg-6 col-md-6 form-group">
+            {!! Form::text('time', null, ['class'=>'form-control', 'placeholder'=>'Time']) !!}
+
+            @error('time')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="col-lg-6 col-md-6 form-group">
+            {!! Form::select('table_number', ['Table for 2'=>'Table For 2', 'Table for 4'=>'Table for 4', 'Table for 6'=>'Table for 6', 'Table for 8'=>'Table for 8', 'Table for 10'=>'Table for 10', 'Table for 12'=>'Table for 12'], null, ['class'=>'form-control', 'placeholder'=>'# of People']) !!}
+
+            @error('table_number')
+              <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+
         </div>
 
-        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-          <div class="form-row">
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-            <div class="validate"></div>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Book a Table</button></div>
-        </form>
+        <div class="form-group">
+          {!! Form::textarea('message',null, ['class'=>'form-control','rows'=>3, 'placeholder'=>'Message']) !!}
 
+        @error('message')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
       </div>
-    </section><!-- End Book A Table Section -->
+
+      <div class="text-center">{!! Form::submit('Book a Table', ['class'=>'btn btn-warning']) !!}</div>
+
+
+      {!! Form::close() !!}
+      </div>
+  @else
+    <div class="alert alert-danger">Login to Book Now!</div>
+  @endif
+          
+  </section><!-- End Book A Table Section -->
 

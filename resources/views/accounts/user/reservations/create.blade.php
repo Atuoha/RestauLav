@@ -4,6 +4,9 @@
 
 @section('content')
     
+@if(session('RESERVATION_CREATE'))
+    <div class="alert alert-success">{{ session('RESERVATION_CREATE') }}</div>
+@endif
 
 <section class="panel">
 <header class="panel-heading no-border">
