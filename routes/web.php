@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home_website');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('home_website');
+
+Route::get('/', 'IndexPageController@index')->name('home_website');
 
 Route::view('/unactive-account','home')->name('unactive-home');
 

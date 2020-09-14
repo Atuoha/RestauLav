@@ -54,7 +54,8 @@ class UserTestimonyController extends Controller
         $input = [
             'user_id' => $user->id,
             'message' => $request->message,
-            'job_title' => $request->job_title
+            'job_title' => $request->job_title,
+            'photo_id' => $user->photo_id
         ];
 
         Testimony::create($input);

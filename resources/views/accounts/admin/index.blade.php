@@ -10,7 +10,7 @@ Dashboard
 </header>
 <div  style="padding:10px;">
     <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box blue-bg">
               <i class="fa fa-shopping-cart"></i>
               <div class="count">{{ count($orders) }}</div>
@@ -20,7 +20,7 @@ Dashboard
           </div>
           <!--/.col-->
 
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box brown-bg">
               <i class="fa fa-book"></i>
               <div class="count">{{ count($reservations ) }}</div>
@@ -30,7 +30,7 @@ Dashboard
           </div>
           <!--/.col-->
 
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box dark-bg">
               <i class="fa fa-thumbs-o-up"></i>
               <div class="count">{{ count($testimonies) }}</div>
@@ -40,11 +40,31 @@ Dashboard
           </div>
           <!--/.col-->
 
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box dark-bg">
+              <i class="fa fa-thumbs-o-up"></i>
+              <div class="count">{{ count($testimonies) }}</div>
+              <div class="title">All Stabled Testimonies</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <div class="info-box dark-bg">
+              <i class="fa fa-thumbs-o-up"></i>
+              <div class="count">{{ count($dishes) }}</div>
+              <div class="title">All Dishes</div>
+            </div>
+            <!--/.info-box-->
+          </div>
+          <!--/.col-->
+
+          <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box green-bg">
               <i class="fa fa-envelope"></i>
-              <div class="count">{{ count($contacts) }}</div>
-              <div class="title">All Approved Contacts</div>
+              <div class="count">{{ count($users) }}</div>
+              <div class="title">All Users</div>
             </div>
             <!--/.info-box-->
           </div>

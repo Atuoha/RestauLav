@@ -11,7 +11,7 @@
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
               <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Modi sit est</a>
+                <a class="nav-link  " data-toggle="tab" href="#tab-1">Modi sit est</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tab-2">Unde praesentium sed</a>

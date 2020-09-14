@@ -33,13 +33,13 @@
 <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
-        <i class="icofont-phone"></i> +1 5589 55488 55
-        <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sat: 11:00 AM - 23:00 PM</span>
+        <i class="icofont-phone"></i> +234 000 0000 000
+        <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sat: 9:00 AM - 11:00 PM</span>
       </div>
       <div class="languages">
         <ul>
           <li>En</li>
-          <li><a href="#">De</a></li>
+          <li><a href="#">Fr</a></li>
         </ul>
       </div>
     </div>
