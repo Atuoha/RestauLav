@@ -20,17 +20,17 @@
                 <p><span>$189</span></p>
               </div>
               <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+              At RestauLav we chose to serve everyone like kings and queens for they're truly one in our eyes.
+
               </p>
               <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                <li><i class="icofont-check-circled"></i> Good Services.</li>
+                <li><i class="icofont-check-circled"></i> Pretty Prices.</li>
+                <li><i class="icofont-check-circled"></i> Amazing Dishes/Wines.</li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
+              We provide you with the best possibilities of an awesome event without fails of any kind
+                RestauLav has been in existence during the worsts of events
               </p>
             </div>
           </div>
@@ -45,17 +45,16 @@
                 <p><span>$290</span></p>
               </div>
               <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+              At RestauLav we chose to serve everyone like kings and queens for they're truly one in our eyes.
               </p>
               <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                <li><i class="icofont-check-circled"></i> Good Services.</li>
+                <li><i class="icofont-check-circled"></i> Pretty Prices.</li>
+                <li><i class="icofont-check-circled"></i> Amazing Dishes/Wines.</li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
+              We provide you with the best possibilities of an awesome event without fails of any kind
+              RestauLav has been in existence during the worsts of events
               </p>
             </div>
           </div>
@@ -70,24 +69,22 @@
                 <p><span>$99</span></p>
               </div>
               <p class="font-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+              At RestauLav we chose to serve everyone like kings and queens for they're truly one in our eyes.
               </p>
               <ul>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                <li><i class="icofont-check-circled"></i> Good Services.</li>
+                <li><i class="icofont-check-circled"></i> Pretty Prices.</li>
+                <li><i class="icofont-check-circled"></i> Amazing Dishes/Wines.</li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur
+                We provide you with the best possibilities of an awesome event without fails of any kind
+                RestauLav has been in existence during the worsts of events
               </p>
             </div>
           </div>
 
 
         </div>
-        Book Now
 
       </div>
     </section><!-- End Events Section -->

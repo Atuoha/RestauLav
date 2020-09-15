@@ -26,7 +26,7 @@
 
               @endforeach
           @else
-              <div class="alert alert-danger">No Testimonies Yet!</div>
+              <div class="alert alert-success">No Testimonies Yet!</div>
           @endif
           
         </div>

@@ -37,7 +37,7 @@
           </div>
 
         @else
-            <div class="alert alert-danger">No Dishes Yet!</div>
+            <div class="alert alert-success">No Dishes Yet!</div>
         @endif
 
       </div>

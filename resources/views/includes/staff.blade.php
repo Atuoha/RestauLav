@@ -11,27 +11,32 @@
         <div class="row">
 
 
-        
+        @if(count($staffs) > 0)
+            @foreach($staffs as $staff)
 
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-              <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Master Chef</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
+            <div class="col-lg-4 col-md-6">
+              <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{{ $staff->photo->name }}" class="img-fluid" alt="">
+                <div class="member-info">
+                  <div class="member-info-content">
+                    <h4>{{ $staff->name }}</h4>
+                    <span>{{ $staff->job_title }}</span>
+                  </div>
+                  <div class="social">
+                    <a href=""><i class="icofont-twitter"></i></a>
+                    <a href=""><i class="icofont-facebook"></i></a>
+                    <a href=""><i class="icofont-instagram"></i></a>
+                    <a href=""><i class="icofont-linkedin"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-       
+           @endforeach
+
+        @else
+            <div class="alert success">No Staffs Yet!</div>
+        @endif
 
         </div>
 

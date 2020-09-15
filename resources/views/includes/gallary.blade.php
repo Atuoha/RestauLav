@@ -23,7 +23,7 @@
         @endforeach  
 
     @else
-        <div class="alert alert-danger">No Photos Yet!</div>
+        <div class="alert alert-success">No Photos Yet!</div>
     @endif
 
         </div>

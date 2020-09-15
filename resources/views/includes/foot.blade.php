@@ -8,9 +8,9 @@
             <div class="footer-info">
               <h3>RestauLav</h3>
               <p>
-                A108 Adam Street <br>
-                PHC 535022, Nigeria<br><br>
-                <strong>Phone:</strong> +234 8143 00267<br>
+                A108 Coding Street <br>
+                PHC, Nigeria<br><br>
+                <strong>Phone:</strong> +234 814 320 0267<br>
                 <strong>Email:</strong> atutechsdev@gmail.com<br>
               </p>
               <div class="social-links mt-3">
@@ -49,9 +49,9 @@
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <p>Subscribe in to our newsletter to receive updates</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email" required><input type="submit" value="Subscribe">
             </form>
 
           </div>

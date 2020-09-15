@@ -77,7 +77,7 @@
 
       @else
         
-      <div class="alert alert-success">Login so as to be able to contact us</div>
+      <div class="alert alert-success">Login to contact us</div>
 
       @endif
 

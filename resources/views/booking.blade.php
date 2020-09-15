@@ -64,7 +64,7 @@
       {!! Form::close() !!}
       </div>
   @else
-    <div class="alert alert-danger">Login to Book Now!</div>
+    <div class="alert alert-success">Login to Book Now!</div>
   @endif
           
   </section><!-- End Book A Table Section -->
