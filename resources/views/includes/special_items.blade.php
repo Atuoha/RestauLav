@@ -27,7 +27,7 @@
               <div class="tab-pane" id="tab-{{ $special_dish->id }}">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>{{ $special_dish->name }}</h3>
+                    <h3><a href="{{ route('single', $special_dish->slug) }}">{{ $special_dish->name }}</a></h3>
                     
                     <p class="font-italic">Category: {{ $special_dish->category->name }}</p>
                     <p>{{ Str::limit($special_dish->content, 50) }}</p>

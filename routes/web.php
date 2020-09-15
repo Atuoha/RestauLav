@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // })->name('home_website');
 
 Route::get('/', 'IndexPageController@index')->name('home_website');
+Route::get('/dish/{slug}', 'IndexPageController@single_page')->name('single');
 
 Route::view('/unactive-account','home')->name('unactive-home');
 

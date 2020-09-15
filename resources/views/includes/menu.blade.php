@@ -27,7 +27,7 @@
                 <div class="col-lg-6 menu-item filter-{{$dish->category->name}}">
                   <img src="{{$dish->photo->name}}" class="menu-img" alt="">
                   <div class="menu-content">
-                    <a href="#">{{$dish->name}}</a><span>${{$dish->price}}</span>
+                    <a href="{{ route('single', $dish->slug) }}">{{$dish->name}}</a><span>${{$dish->price}}</span>
                   </div>
                   <div class="menu-ingredients">
                     {{ Str::limit($dish->content, 20) }}
