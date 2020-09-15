@@ -56,7 +56,7 @@ class UserContactController extends Controller
 
         Contact::create($input);
         Session::flash('CONTACT_CREATE', 'Your contact with subject of '. $request->subject.' has been created');
-        return redirect('user/user_contact');
+        return redirect()->back();
 
     }
 

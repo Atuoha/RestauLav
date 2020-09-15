@@ -8,6 +8,10 @@
 Message Contact 
 </header>
 
+@if(session('CONTACT_CREATE'))
+    <div class="alert alert-success">{{ session('CONTACT_CREATE') }}</div>
+@endif
+
 <div class="container">
  {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store']) !!} 
     <div class="row">
