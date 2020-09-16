@@ -16,7 +16,7 @@
                     <div class="testimonial-item">
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        {{ $testimony->message }} 
+                        {{ strip_tags($testimony->message) }} 
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                   <img src="{{ $testimony->photo->name}}" class="testimonial-img" alt="">

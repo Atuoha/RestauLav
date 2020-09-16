@@ -12,9 +12,31 @@
 <header class="panel-heading no-border">
 All Trashed Reservations | We just kept them safe for you just in case you feel like...
 </header>
-    <table class="table table-bordered table-responsive">
+
+<form action="/action/reserve" method="post">
+ {{ csrf_field() }}   
+ {{ method_field('put') }}
+
+<select name="action" required class="form-control multi-action col-md-4" id="">
+    <option value="" disabled selected>Select Option</option>
+    <option value="terminate">Termainate</option>
+    <option value="retrieve">Retrieve</option>
+</select>
+<button type="submit" class="btn btn-danger multi-action">Perform action</button>    
+
+<!-- Hiding multi-action -->
+    <style>
+        .multi-action{
+            display:none;
+        }
+    </style>
+<!--  -->
+
+
+<table class="table table-bordered table-responsive">
     <thead>
         <tr>
+        <th><input type="checkbox" name="checkbox_single" id="checkbox"></th>
         <th>#</th>
         <th>Name Used</th>
         <th>Email Used</th>
@@ -33,6 +55,8 @@ All Trashed Reservations | We just kept them safe for you just in case you feel 
         @if(count($reservations) > 0)
             @foreach($reservations as $reserve)
                 <tr>
+                <td><input type="checkbox" value="{{ $reserve->id }} " name="checkbox_array[]" class="checkboxes"></td>
+ </form>
                     <td>{{ $reserve->id }}</td>
                     <td>{{ $reserve->user->name }}</td>
                     <td>{{ $reserve->email }}</td>
@@ -66,4 +90,38 @@ All Trashed Reservations | We just kept them safe for you just in case you feel 
         </div>
     </div>
 </section>
+
+
+<!-- Script for multi-selection -->
+<script>
+       $(document).ready(function(){
+
+        //  MULTI-SELECTION
+           $('#checkbox').click(function(){
+             if(this.checked){
+                 $('.multi-action').fadeIn('slow');
+                 $('.checkboxes').each(function(){
+                     this.checked = true;
+                 })
+             }else{
+                $('.multi-action').fadeOut('slow');
+                $('.checkboxes').each(function(){
+                     this.checked = false;
+                 })
+             }
+
+           }); 
+
+        // SINGLE SELECTION
+           $('.checkboxes').click(function(){
+               if(this.checked){
+                 $('.multi-action').fadeIn('slow');
+               }else{
+                $('.multi-action').fadeOut('slow');
+               }
+           })
+           
+       });
+   </script>
+<!--  -->
 @endsection

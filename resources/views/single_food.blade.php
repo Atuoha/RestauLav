@@ -55,7 +55,8 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{ route('home_website') }}">Home</a></li>          
+          <li class="active"><a href="{{ route('home_website') }}">Home</a></li>  
+                  
           @if(Auth::check())
            <li class="book-a-table text-center"><a href="/login">{{ Auth::user()->name }}</a></li>
           @else
@@ -77,9 +78,11 @@
           </div>
 
           <div class="col-lg-7">
-            <p style="text-align:justify;">
-                {{ $dish->content }}
+            <p style="text-align:center;">
+                {{ trim(html_entity_decode(strip_tags($dish->content))) }}  
             </p> 
+            <br>
+
             <small> - Category: {{ $dish->category->name }}</small>   
             <small> - Price: ${{ $dish->price }}</small> 
             <small> - Food Plan: {{ $dish->food_plan }}</small>     
@@ -119,7 +122,7 @@
 
 
 
-<div style="margin-top:10px">
+<div style="margin-top:60px">
     @include('includes.foot')
 </div>
 </body>

@@ -102,5 +102,25 @@ class UserDeletedOrdersController extends Controller
        $order->forceDelete();
        return redirect('user/deleted_orders');
     }
+
+    public function multi_action(Request $req){
+
+        $action = $req->action;
+        $orders = Order::findOrFail($req->checkbox_array);
+
+        if($action == 'terminate'){
+            foreach($orders as $order){
+                $order->forceDelete();
+            }
+         Session::flash('ORDER_DELETE', 'Your order(s) has been terminated permanently');
+         return redirect('user/deleted_orders');
+        }else{
+            foreach($orders as $order){
+                $order->restore();
+            }
+         Session::flash('ORDER_DELETE', 'Your order(s) has been retrieved');
+         return redirect('user/deleted_orders');
+        }
+    }
 }
 

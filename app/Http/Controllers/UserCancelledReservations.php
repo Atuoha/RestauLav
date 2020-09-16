@@ -106,4 +106,27 @@ class UserCancelledReservations extends Controller
        $reserve->forceDelete();
        return redirect('user/deleted_reserve');
     }
+
+
+    public function multi_action(Request $req){
+
+        $action = $req->action;
+        $reserves = Reservation::findOrFail($req->checkbox_array);
+
+        if($action == 'terminate'){
+            foreach($reserves as $reserve){
+                $reserve->forceDelete();
+            }
+         Session::flash('RESERVATION_DELETE', 'Your reservation(s) has been terminated permanently');
+         return redirect('user/deleted_reserve');
+        }else{
+            foreach($reserves as $reserve){
+                $reserve->restore();
+            }
+         Session::flash('RESERVATION_DELETE', 'Your reservation(s) has been retrieved');
+         return redirect('user/deleted_reserve');
+        }
+
+    }    
+
 }

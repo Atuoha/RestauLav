@@ -9,12 +9,12 @@
 Dashboard
 </header>
 <div  style="padding:10px;">
-    <div class="row">
+    <div class="row" >
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box blue-bg">
               <i class="fa fa-shopping-cart"></i>
               <div class="count">{{ count($orders) }}</div>
-              <div class="title">Successful Orders</div>
+              <div class="title" ><a style="color:whitesmoke;" href="{{ route('user_orders.index') }}">Successful Orders</a></div>
             </div>
             <!--/.info-box-->
           </div>
@@ -24,7 +24,7 @@ Dashboard
             <div class="info-box brown-bg">
               <i class="fa fa-book"></i>
               <div class="count">{{ count($reservations ) }}</div>
-              <div class="title">Active Reservations</div>
+              <div class="title" ><a style="color:whitesmoke;" href="{{ route('user_reserve.index') }}">Active Reservations</a></div>
             </div>
             <!--/.info-box-->
           </div>
@@ -34,7 +34,7 @@ Dashboard
             <div class="info-box dark-bg">
               <i class="fa fa-thumbs-o-up"></i>
               <div class="count">{{ count($testimonies) }}</div>
-              <div class="title">Stabled Testimonies</div>
+              <div class="title" ><a style="color:whitesmoke;" href="{{ route('user_testimonies.index') }}">Stabled Testimonies</a></div>
             </div>
             <!--/.info-box-->
           </div>
@@ -44,7 +44,7 @@ Dashboard
             <div class="info-box green-bg">
               <i class="fa fa-envelope"></i>
               <div class="count">{{ count($contacts) }}</div>
-              <div class="title">Approved Contacts</div>
+              <div class="title" ><a style="color:whitesmoke;" href="{{ route('user_contact.index') }}">Approved Contacts</a></div>
             </div>
             <!--/.info-box-->
           </div>

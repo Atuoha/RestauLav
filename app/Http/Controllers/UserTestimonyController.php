@@ -124,4 +124,19 @@ class UserTestimonyController extends Controller
         Session::flash('TESTIMONY_DELETE', 'Your testimony has been deleted and removed from list!');
         return redirect('user/user_testimonies');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $testimonies = Testimony::findOrFail($request->checkbox_array);
+
+        foreach($testimonies as $testimony){
+            $testimony->delete();
+        }
+
+        Session::flash('TESTIMONY_DELETE', 'Your testimony(ies) has been deleted');
+        return redirect('user/user_testimonies');
+
+
+    }
 }

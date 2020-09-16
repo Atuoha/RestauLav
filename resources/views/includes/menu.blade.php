@@ -30,7 +30,7 @@
                     <a href="{{ route('single', $dish->slug) }}">{{$dish->name}}</a><span>${{$dish->price}}</span>
                   </div>
                   <div class="menu-ingredients">
-                    {{ Str::limit($dish->content, 20) }}
+                    {{ strip_tags(Str::limit($dish->content, 20)) }}
                   </div>
                 </div>
             @endforeach

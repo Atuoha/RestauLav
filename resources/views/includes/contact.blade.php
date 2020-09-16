@@ -56,10 +56,10 @@
                 <div class="alert alert-success">{{ session('CONTACT_CREATE') }}</div>
               @endif
 
-            {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store', 'class'=>'php-email-form']) !!}
+            {!! Form::open(['method'=>'POST', 'action'=>'UserContactController@store', ]) !!}
    
               <div class="form-group">
-                {!! Form::text('subject', null, ['class'=>'form-control', 'placeholder'=>'subject','data-msg'=>'Please fill the subject field', 'required']) !!}
+                {!! Form::text('subject', null, ['class'=>'form-control', 'placeholder'=>'Subject','data-msg'=>'Please fill the subject field', 'required']) !!}
 
                 @error('subject')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -67,10 +67,10 @@
               </div>
 
               <div class="form-group">
-                {!! Form::textarea('message', null, ['class'=>'form-control', 'rows'=>8, 'data-msg'=>'Please fill the message field', 'required']) !!}
+                {!! Form::textarea('message', null, ['class'=>'form-control', 'rows'=>8, 'placeholder'=>'Message', 'required']) !!}
               </div>
              
-              <div class="text-center">{!! Form::submit('Submit Request', ['class'=>'btn']) !!}</div>
+              <div class="text-center">{!! Form::submit('Submit Request', ['class'=>'btn btn-warning']) !!}</div>
             {!! Form::close() !!}
 
           </div>

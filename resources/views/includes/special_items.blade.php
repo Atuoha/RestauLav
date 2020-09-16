@@ -30,7 +30,7 @@
                     <h3><a href="{{ route('single', $special_dish->slug) }}">{{ $special_dish->name }}</a></h3>
                     
                     <p class="font-italic">Category: {{ $special_dish->category->name }}</p>
-                    <p>{{ Str::limit($special_dish->content, 50) }}</p>
+                    <p>{{ trim(html_entity_decode(strip_tags(Str::limit($special_dish->content, 150)))) }}</p>
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
                     <img src="{{ $special_dish->photo->name }}" alt="" class="img-fluid">

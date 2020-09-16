@@ -211,6 +211,37 @@ Route::get('user/deleted_orders/terminate/{id}', 'UserDeletedOrdersController@te
  //
  
 
+// MULTI DELETES
+
+// CONTACTS
+Route::delete('/delete/contact', 'UserContactController@multi_delete');
+// 
+
+
+// ORDERS
+Route::delete('/delete/orders', 'UserOrdersController@multi_delete');
+
+Route::put('/action/orders', 'UserDeletedOrdersController@multi_action');
+// 
+
+
+
+// RESERVATIONS
+Route::delete('/delete/reserve', 'UserReservationController@multi_delete');
+
+Route::put('/action/reserve', 'UserCancelledReservationsController@multi_action');
+
+// 
+
+
+
+// TESTIMONIES
+Route::delete('/delete/testimony', 'UserTestimonyController@multi_delete');
+// 
+
+
+// 
+
 });
 // END OF USER ROUTES ------------------------------------------------------------------------------------------------------------------------
  

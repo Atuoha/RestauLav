@@ -120,8 +120,22 @@ class UserReservationController extends Controller
     {
         //
         $reservation = Reservation::findOrFail($id);
-        Session::flash('RESERVATION_UPDATE', 'Your reservation for '. $reservation->table_number.' has been deleted and cancelled successfully');
+        Session::flash('RESERVATION_DELETE', 'Your reservation for '. $reservation->table_number.' has been deleted and cancelled successfully');
         $reservation->delete();
         return redirect('user/user_reserve');
+    }
+
+    public function multi_delete(Request $request){
+
+        $reserves = Reservation::findOrFail($request->checkbox_array);
+
+        foreach($reserves as $reserve){
+            $reserve->delete();
+        }
+
+        Session::flash('RESERVATION_DELETE', 'Your reserve(s) has been deleted');
+        return redirect('user/user_reserve');
+
+
     }
 }

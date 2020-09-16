@@ -112,4 +112,19 @@ class UserOrdersController extends Controller
         $order->delete();
         return redirect('user/user_orders');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $orders = Order::findOrFail($request->checkbox_array);
+
+        foreach($orders as $order){
+            $order->delete();
+        }
+
+        Session::flash('ORDER_DELETE', 'Your order(s) has been deleted');
+        return redirect('user/user_orders');
+
+
+    }
 }
