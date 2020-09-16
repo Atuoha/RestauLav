@@ -123,8 +123,8 @@ class UserCancelledReservations extends Controller
             foreach($reserves as $reserve){
                 $reserve->restore();
             }
-         Session::flash('RESERVATION_DELETE', 'Your reservation(s) has been retrieved');
-         return redirect('user/deleted_reserve');
+         Session::flash('RESERVATION_RETRIEVE', 'Your reservation(s) has been retrieved');
+         return redirect('user/user_reserve');
         }
 
     }    

@@ -51,7 +51,7 @@ Single reserve | {{ $reserve->table_number }}
 
                 <tr>
                 <th>Message</th>
-                <td> {{ Str::limit($reserve->message, 30)}}</td>
+                <td> {{ strip_tags(Str::limit($reserve->message, 20)) }}</td>
                 </tr>
 
                 <tr>

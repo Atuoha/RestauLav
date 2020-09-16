@@ -188,4 +188,26 @@ class AdminUserController extends Controller
         return view('accounts.admin.profile.index', compact('profile'));
 
     }
+
+
+    public function multi_delete(Request $request){
+
+        $users = User::findOrFail($request->checkbox_array);
+
+        foreach($users as $user){
+
+            if($user->photo != ''){
+                unlink(public_path().$user->photo->name);
+                Photo::findOrFail($user->photo)->delete();
+            }
+    
+                // Deleting User
+                $user->delete();
+        }
+
+        Session::flash('USER_DELETE', 'Your user(s) has been deleted');
+        return redirect('/admin/users');
+
+
+    }
 }

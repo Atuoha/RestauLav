@@ -64,7 +64,7 @@ All Trashed Reservations | We just kept them safe for you just in case you feel 
                     <td>{{ $reserve->table_number }}</td>
                     <td>{{ $reserve->date }}</td>
                     <td>{{ $reserve->time }}</td>
-                    <td>{{ Str::limit($reserve->message, 20) }}</td>
+                    <td>{{ strip_tags(Str::limit($reserve->message, 20)) }}</td>
                     <td>Cancelled</td>
                     <td>{{ $reserve->created_at->diffForHumans() }}</td>
                     <td>{{ $reserve->updated_at->diffForHumans() }}</td>

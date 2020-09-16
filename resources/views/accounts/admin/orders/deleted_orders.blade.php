@@ -14,9 +14,30 @@ Orders | The Trash Bin
 
 
 
+<form action="/action/orders" method="post">
+ {{ csrf_field() }}   
+ {{ method_field('put') }}
+
+<select name="action" required class="form-control multi-action col-md-4" id="">
+    <option value="" disabled selected>Select Option</option>
+    <option value="terminate">Termainate</option>
+    <option value="retrieve">Retrieve</option>
+</select>
+<button type="submit" class="btn btn-danger multi-action">Perform action</button>    
+
+<!-- Hiding multi-action -->
+    <style>
+        .multi-action{
+            display:none;
+        }
+    </style>
+<!--  -->
+
+
 <table class="table table-bordered table-responsive">
     <thead>
         <tr>
+        <th><input type="checkbox" name="checkbox_single" id="checkbox"></th>
             <th>#</th>
             <th>Name Used</th>
             <th>Email Used</th>
@@ -38,7 +59,9 @@ Orders | The Trash Bin
     <tbody>
         @if(count($orders) > 0)
             @foreach($orders as $order)
-                <tr>
+            <tr>
+                <td><input type="checkbox" value="{{ $order->id }} " name="checkbox_array[]" class="checkboxes"></td>
+ </form>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->user->email }}</td>
@@ -50,7 +73,7 @@ Orders | The Trash Bin
                     <td>${{ $order->total_price }}</td>
                     <td>{{ $order->time }}</td>
                     <td>{{ $order->date }}</td>
-                    <td>{{ $order->message }}</td>
+                    <td>{{ strip_tags(Str::limit($order->message, 30)) }}</td>
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
@@ -81,4 +104,39 @@ Orders | The Trash Bin
 
 </section>
 
+
+
+
+<!-- Script for multi-selection -->
+<script>
+       $(document).ready(function(){
+
+        //  MULTI-SELECTION
+           $('#checkbox').click(function(){
+             if(this.checked){
+                 $('.multi-action').fadeIn('slow');
+                 $('.checkboxes').each(function(){
+                     this.checked = true;
+                 })
+             }else{
+                $('.multi-action').fadeOut('slow');
+                $('.checkboxes').each(function(){
+                     this.checked = false;
+                 })
+             }
+
+           }); 
+
+        // SINGLE SELECTION
+           $('.checkboxes').click(function(){
+               if(this.checked){
+                 $('.multi-action').fadeIn('slow');
+               }else{
+                $('.multi-action').fadeOut('slow');
+               }
+           })
+           
+       });
+   </script>
+<!--  -->
 @stop

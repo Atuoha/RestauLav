@@ -122,4 +122,19 @@ class AdminTestimonyController extends Controller
         Session::flash('TESTIMONY_DELETE', 'Testimony has been deleted and removed from list!');
         return redirect('admin/admin_testimonies');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $testimonies = Testimony::findOrFail($request->checkbox_array);
+
+        foreach($testimonies as $testimony){
+            $testimony->delete();
+        }
+
+        Session::flash('TESTIMONY_DELETE', 'Your testimony(ies) has been deleted');
+        return redirect('admin/admin_testimonies');
+
+
+    }
 }

@@ -116,4 +116,19 @@ class AdminContactController extends Controller
         $contact->delete();
         return redirect('admin/admin_contact');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $contacts = Contact::findOrFail($request->checkbox_array);
+
+        foreach($contacts as $contact){
+            $contact->delete();
+        }
+
+        Session::flash('CONTACT_DELETE', 'Your contact(s) has been deleted');
+        return redirect('admin/admin_contact');
+
+
+    }
 }

@@ -59,7 +59,7 @@ Testimonies
                 <td>{{ $testimony->user->name }}</td>
                 <td>{{ $testimony->user->name }}</td>
                 <td>{{ $testimony->job_title }}</td>
-                <td>{{ $testimony->message }}</td>
+                <td>{{ strip_tags(Str::limit($testimony->message, 20)) }}</td>
                 <td>{{ $testimony->created_at->diffForHumans() }}</td>
                 <td>{{ $testimony->updated_at->diffForHumans() }}</td>
                

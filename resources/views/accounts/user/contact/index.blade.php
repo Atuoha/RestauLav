@@ -59,7 +59,7 @@ Message Contacts
                 <td>{{ $contact->user->name }}</td>
                 <td>{{ $contact->user->email }}</td>
                 <td>{{ $contact->subject }}</td>
-                <td>{{ strip_tags($contact->message) }}</td>
+                <td>{{ strip_tags(Str::limit($contact->message, 30)) }}</td>
                 <td>{{ $contact->created_at->diffForHumans() }}</td>
                 <td>{{ $contact->updated_at->diffForHumans() }}</td>
                

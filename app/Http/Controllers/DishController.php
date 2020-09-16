@@ -148,5 +148,19 @@ class DishController extends Controller
 
     }
 
+    public function multi_delete(Request $request){
+
+        $dishes = Dish::findOrFail($request->checkbox_array);
+
+        foreach($dishes as $dish){
+            $dish->delete();
+        }
+
+        Session::flash('DISH_DELETE', 'Your dish(es) has been deleted');
+        return redirect('admin/dishes');
+
+
+    }
+
    
 }

@@ -41,4 +41,25 @@ class DeletedDishController extends Controller
         Session::flash('DISH_RESTORE', 'Dish has been successfully restored');
         return redirect('/admin/dishes');
     }
+
+
+    public function multi_action(Request $req){
+
+        $action = $req->action;
+        $dishes = Dish::findOrFail($req->checkbox_array);
+
+        if($action == 'terminate'){
+            foreach($dishes as $dish){
+                $dish->forceDelete();
+            }
+         Session::flash('DISH_DELETE', 'Your dish(es) has been terminated permanently');
+         return redirect('admin/admin_deleted_orders');
+        }else{
+            foreach($dishes as $dish){
+                $dish->restore();
+            }
+         Session::flash('DISH_RESTORE', 'Your dish(es) has been retrieved');
+         return redirect('admin/dishes');
+        }
+    }
 }

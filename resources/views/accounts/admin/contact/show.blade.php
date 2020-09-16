@@ -36,7 +36,7 @@ Single contact | {{ $contact->subject }}
                 
                 <tr>
                 <th>Message</th>
-                <td> {{ Str::limit($contact->message, 30)}}</td>
+                <td> {{ strip_tags(Str::limit($contact->message,30))  }}</td>
                 </tr>
 
                 <tr>

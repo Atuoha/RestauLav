@@ -44,7 +44,7 @@ Single Dish | {{ $dish->name }}
 
                 <tr>
                 <th>Content</th>
-                <td> {{ Str::limit($dish->content, 30)}}</td>
+                <td> {{ strip_tags(Str::limit($dish->content, 30)) }}</td>
                 </tr>
 
                 <tr>

@@ -104,4 +104,20 @@ class PhotoController extends Controller
         Session::flash('MEDIA_DELETE', 'Photo has been deleted successfully');
         return redirect('/admin/medias');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $photos = Photo::findOrFail($request->checkbox_array);
+
+        foreach($photos as $photo){
+            unlink(public_path() . $photo->name);
+            Photo::findOrFail($id)->delete();
+        }
+
+        Session::flash('MEDIA_DELETE', 'Your photo(s) has been deleted');
+        return redirect('/admin/medias');
+
+
+    }
 }

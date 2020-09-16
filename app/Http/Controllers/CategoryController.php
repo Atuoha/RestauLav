@@ -112,4 +112,19 @@ class CategoryController extends Controller
         $category->delete();
         return redirect('admin/categories');
     }
+
+
+    public function multi_delete(Request $request){
+
+        $categories = Category::findOrFail($request->checkbox_array);
+
+        foreach($categories as $category){
+            $category->delete();
+        }
+
+        Session::flash('CATEGORY_DELETE', 'Your category(ies) has been deleted');
+        return redirect('admin/categories');
+
+
+    }
 }

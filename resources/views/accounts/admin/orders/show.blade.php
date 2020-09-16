@@ -71,7 +71,7 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
 
                 <tr>
                 <th>Message</th>
-                <td> {{ Str::limit($order->message, 30)}}</td>
+                <td> {{ strip_tags(Str::limit($order->message, 30)) }}</td>
                 </tr>
 
                 <tr>

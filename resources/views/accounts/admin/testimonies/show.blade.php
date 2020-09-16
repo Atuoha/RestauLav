@@ -36,7 +36,7 @@ Single Testimony
                 
                 <tr>
                 <th>Message</th>
-                <td> {{ Str::limit($testimony->message, 30)}}</td>
+                <td> {{ strip_tags($testimony->message, 30)) }}</td>
                 </tr>
 
                 <tr>

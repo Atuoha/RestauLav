@@ -125,6 +125,64 @@ Route::get('admin/admin_deleted_reserve/terminate/{id}', 'AdminCancelledReservat
 
 
 
+
+
+
+// MULTI DELETES
+
+// CONTACTS
+Route::delete('/delete/contact', 'AdminContactController@multi_delete');
+// 
+
+
+// ORDERS
+Route::delete('/delete/orders', 'AdminOrdersController@multi_delete');
+
+Route::put('/action/orders', 'AdminDeletedOrdersController@multi_action');
+// 
+
+
+
+// RESERVATIONS
+Route::delete('/delete/reserve', 'AdminReservationController@multi_delete');
+
+Route::put('/action/reserve', 'AdminCancelledReservationsController@multi_action');
+
+// 
+
+
+
+// TESTIMONIES
+Route::delete('/delete/testimony', 'AdminTestimonyController@multi_delete');
+// 
+
+// DISH
+Route::delete('/delete/dish', 'DishController@multi_delete');
+
+Route::put('/action/dish', 'DeletedDishController@multi_action');
+
+// 
+
+// CATEGORY
+Route::delete('/delete/category', 'CategoryController@multi_delete');
+// 
+
+// USER
+Route::delete('/delete/user', 'AdminUserController@multi_delete');
+// 
+
+
+// PHOTO
+Route::delete('/delete/photo', 'PhotoController@multi_delete');
+// 
+
+// 
+
+
+
+
+
+
 });
 
 // END OF ADMIN ROUTES --------------------------------------------------------------------------------------------------------------------

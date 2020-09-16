@@ -111,4 +111,31 @@ class AdminOrdersController extends Controller
         $order->delete();
         return redirect('admin/admin_orders');
     }
+
+    public function multi_delete(Request $request){
+
+        $orders = Order::findOrFail($request->checkbox_array);
+
+        $action = $req->action;
+
+        if($action == 'Delete'){
+            foreach($orders as $order){
+                $order->delete();
+            }
+    
+            Session::flash('ORDER_DELETE', 'Your order(s) has been deleted');
+            return redirect('admin/admin_orders');
+        }else{
+            foreach($orders as $order){
+                $order->update($req->all());
+            }
+    
+            Session::flash('ORDER_UPDATE', 'Order(s) has been updated successfully');
+            return redirect('admin/admin_orders');
+        }
+
+      
+
+
+    }
 }

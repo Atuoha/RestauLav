@@ -118,8 +118,8 @@ class UserDeletedOrdersController extends Controller
             foreach($orders as $order){
                 $order->restore();
             }
-         Session::flash('ORDER_DELETE', 'Your order(s) has been retrieved');
-         return redirect('user/deleted_orders');
+         Session::flash('ORDER_RETRIEVE', 'Your order(s) has been retrieved');
+         return redirect('user/user_orders');
         }
     }
 }

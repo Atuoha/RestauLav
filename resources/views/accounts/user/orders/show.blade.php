@@ -40,6 +40,11 @@ Single order | {{ $order->item }} | | You can only change your choice if the ite
                 </tr> 
 
                 <tr>
+                    <th>Message</th>
+                    <td>{{ strip_tags(Str::limit($order->message, 30)) }}</td>
+                </tr> 
+
+                <tr>
                     <th>Item</th>
                     <td>{{ $order->item }}</td>
                 </tr> 

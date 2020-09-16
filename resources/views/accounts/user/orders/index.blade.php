@@ -77,7 +77,7 @@ Orders | You can only change your choice if the item has not yet been delivered
                     <td>${{ $order->total_price }}</td>
                     <td>{{ $order->time }}</td>
                     <td>{{ $order->date }}</td>
-                    <td>{{ $order->message }}</td>
+                    <td>{{ strip_tags(Str::limit($order->message, 30)) }}</td>
                     <td>{{ $order->status }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>

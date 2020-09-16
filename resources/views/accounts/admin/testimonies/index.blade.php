@@ -19,9 +19,25 @@ Testimonies
     <div class="alert alert-success">{{ session('TESTIMONY_UPDATE') }}</div>
 @endif
 
+<form action="/delete/testimony" method="post">
+ {{ csrf_field() }}   
+ {{ method_field('delete') }}
+
+<button  id="multi-del-btn" type="submit" class="btn btn-danger">Delete Records</button>    
+
+<!-- Hiding multi-del-btn -->
+    <style>
+        #multi-del-btn{
+            display:none;
+        }
+    </style>
+<!--  -->
+
+
 <table class="table table-bordered table-responsive">
     <thead>
         <tr>
+        <th><input type="checkbox" name="checkbox_single" id="checkbox"></th> 
         <th>#</th>
         <th>Name Used</th>
         <th>Email Used</th>
@@ -36,12 +52,14 @@ Testimonies
         
         @if(count($testimonies) > 0)
            @foreach($testimonies as $testimony)
-            <tr>
+           <tr>
+            <td><input type="checkbox" value="{{ $testimony->id }} " name="checkbox_array[]" class="checkboxes"></td>
+ </form>
                 <td>{{ $testimony->id }}</td>
                 <td>{{ $testimony->user->name }}</td>
                 <td>{{ $testimony->user->name }}</td>
                 <td>{{ $testimony->job_title }}</td>
-                <td>{{ $testimony->message }}</td>
+                <td>{{ strip_tags($testimony->message, 30)) }}</td>
                 <td>{{ $testimony->created_at->diffForHumans() }}</td>
                 <td>{{ $testimony->updated_at->diffForHumans() }}</td>
                
@@ -75,4 +93,40 @@ Testimonies
     </div>
 
 </section>
+
+
+
+
+<!-- Script for multi-selection -->
+<script>
+       $(document).ready(function(){
+
+        //  MULTI-SELECTION
+           $('#checkbox').click(function(){
+             if(this.checked){
+                 $('#multi-del-btn').fadeIn('slow');
+                 $('.checkboxes').each(function(){
+                     this.checked = true;
+                 })
+             }else{
+                $('#multi-del-btn').fadeOut('slow');
+                $('.checkboxes').each(function(){
+                     this.checked = false;
+                 })
+             }
+
+           }); 
+
+        // SINGLE SELECTION
+           $('.checkboxes').click(function(){
+               if(this.checked){
+                 $('#multi-del-btn').fadeIn('slow');
+               }else{
+                $('#multi-del-btn').fadeOut('slow');
+               }
+           })
+           
+       });
+   </script>
+<!--  -->
 @endsection

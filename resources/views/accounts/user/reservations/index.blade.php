@@ -71,7 +71,7 @@ All Reservations
                     <td>{{ $reserve->table_number }}</td>
                     <td>{{ $reserve->date }}</td>
                     <td>{{ $reserve->time }}</td>
-                    <td>{{ Str::limit($reserve->message, 20) }}</td>
+                    <td>{{ strip_tags(Str::limit($reserve->message, 20)) }}</td>
                     <td>{{ $reserve->status }}</td>
                     <td>{{ $reserve->created_at->diffForHumans() }}</td>
                     <td>{{ $reserve->updated_at->diffForHumans() }}</td>

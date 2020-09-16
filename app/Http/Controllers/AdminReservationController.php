@@ -123,4 +123,18 @@ class AdminReservationController extends Controller
         $reservation->delete();
         return redirect('admin/admin_reserve');
     }
+
+    public function multi_delete(Request $request){
+
+        $reserves = Reservation::findOrFail($request->checkbox_array);
+
+        foreach($reserves as $reserve){
+            $reserve->delete();
+        }
+
+        Session::flash('RESERVATION_DELETE', 'Your reserve(s) has been deleted');
+        return redirect('admin/admin_reserve');
+
+
+    }
 }

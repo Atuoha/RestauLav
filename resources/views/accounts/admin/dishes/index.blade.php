@@ -25,9 +25,25 @@ All Dishes
 </header>
 <div class="container">
 
-    <table class="table table-bordered table-responsive">
+<form action="/delete/dish" method="post">
+ {{ csrf_field() }}   
+ {{ method_field('delete') }}
+
+<button  id="multi-del-btn" type="submit" class="btn btn-danger">Delete Records</button>    
+
+<!-- Hiding multi-del-btn -->
+    <style>
+        #multi-del-btn{
+            display:none;
+        }
+    </style>
+<!--  -->
+
+
+<table class="table table-bordered table-responsive">
     <thead>
         <tr>
+        <th><input type="checkbox" name="checkbox_single" id="checkbox"></th>  
         <th>#</th>
         <th>Name</th>
         <th>Author</th>
@@ -46,6 +62,8 @@ All Dishes
         @if(count($dishes) > 0)
             @foreach($dishes as $dish)
             <tr>
+            <td><input type="checkbox" value="{{ $dish->id }} " name="checkbox_array[]" class="checkboxes"></td>
+ </form>
                 <td>{{ $dish->id }}</td>
                 <td>{{ $dish->name }}</td>
                 <td>{{ $dish->user->name }}</td>
@@ -53,7 +71,7 @@ All Dishes
                 <td>{{ $dish->food_plan }}</td>
                 <td>{{ $dish->category->name }}</td>
                 <td><img class="img-rounded" width="60" src="{{ $dish->photo->name }}" alt=""></td>
-                <td>{{ Str::limit($dish->content, 30) }}</td>
+                <td>{{ strip_tags(Str::limit($dish->content, 30)) }}</td>
                 <td>{{ $dish->status }}</td>
                 <td>{{ $dish->created_at->diffForHumans() }}</td>
                 <td>{{ $dish->updated_at->diffForHumans() }}</td>
@@ -91,4 +109,41 @@ All Dishes
     </table>
   </div>
 </section>
+
+
+
+
+
+<!-- Script for multi-selection -->
+<script>
+       $(document).ready(function(){
+
+        //  MULTI-SELECTION
+           $('#checkbox').click(function(){
+             if(this.checked){
+                 $('#multi-del-btn').fadeIn('slow');
+                 $('.checkboxes').each(function(){
+                     this.checked = true;
+                 })
+             }else{
+                $('#multi-del-btn').fadeOut('slow');
+                $('.checkboxes').each(function(){
+                     this.checked = false;
+                 })
+             }
+
+           }); 
+
+        // SINGLE SELECTION
+           $('.checkboxes').click(function(){
+               if(this.checked){
+                 $('#multi-del-btn').fadeIn('slow');
+               }else{
+                $('#multi-del-btn').fadeOut('slow');
+               }
+           })
+           
+       });
+   </script>
+<!--  -->
 @endsection
