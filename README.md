@@ -1,3 +1,41 @@
+# RestauLav
+A Restaurant Featuring Demo App -User | Admin 
+
+Built with Laravel 7.25
+Practised an idea of using a single login page to authenticate both Admins and Users and have them redirected to specific dashboards. That implies that loginController and registerController's  $redirectTo property has no actually value but it determined by the account's role using a little function written on the User Model. And the redirect function on authenticate.php which is in Middleware has been modified to suit the condition.
+Made Use of packages like UniSharp FileManager, htmlCollective, disqus, sluggable, srmklive/PayPal, Socialite(Using Github Login Interface),  dropzone and ...
+
+
+
+
+Note:
+The project needs you to manually creates 3 records on your roles after migration; Admin,Subscriber and Staff. This aids the project to function properly for now till I modify it later. 
+
+The PayPal Integration will require you to have some credentials information which will be passed on .env file. Credentials like:
+
+PAYPAL_MODE=sandbox --
+PAYPAL_SANDBOX_API_USERNAME=  --
+PAYPAL_SANDBOX_API_PASSWORD=  --
+PAYPAL_SANDBOX_API_SECRET=  --
+PAYPAL_CURRENCY=USD  --
+PAYPAL_SANDBOX_API_CERTIFICATE=
+
+
+To use Socialite(Github as i used), you'll need some credentials on your .env file. You'll need to create a github app so as to get this or check out the documentation on : https://laravel.com/docs/7.x/socialite
+
+GITHUB_CLIENT_ID = --
+GITHUB_CLIENT_SECRET = --
+
+You can see this on your PayPal Developer Accounts when you try viewing/editing any of your sandbox accounts.
+Reconfigure the file on config/paypal.php to your wants and the little functions on the PayPalController.
+--- This is just a practical demo, should in case you want to use it for production consider adjusting it to your ... | still on building trials | 
+
+
+
+
+
+
+## Built with
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -11,14 +49,6 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Laravel
@@ -27,35 +57,11 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
