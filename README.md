@@ -2,8 +2,8 @@
 A Restaurant Featuring Demo App -User | Admin 
 
 Built with Laravel 7.25.
-Practised an idea of using a single login page to authenticate both Admins and Users and have them redirected to specific dashboards. That implies that loginController and registerController's  $redirectTo property has no actually value but it determined by the account's role using a little function written on the User Model. And the redirect function on authenticate.php which is in Middleware has been modified to suit the condition. Laravel Socialite using Github Login Interface as implementation tool was was as a means to authenticate users which directly redirects them to the user dashboard. 
-Made Use of packages like UniSharp FileManager, htmlCollective, disqus, sluggable, srmklive/PayPal, Socialite(Using Github Login Interface),  dropzone and ...
+Practised an idea of using a single login page to authenticate both Admins and Users and have them redirected to specific dashboards. That implies that loginController and registerController's  $redirectTo property has no actually value but it determined by the account's role using a little function written on the User Model. And the redirect function on authenticate.php which is in Middleware has been modified to suit the condition. Laravel Socialite using Github Login Interface as implementation tool was used as a means to authenticate users also which directly redirects them to the user dashboard for it assigns a role_id of 2 to them. 
+Made Use of packages like UniSharp FileManager, htmlCollective, disqus(You can use laravelista/comments to replace this), sluggable, srmklive/PayPal, Socialite(Using Github Login Interface),  dropzone and ...
 
 
 
