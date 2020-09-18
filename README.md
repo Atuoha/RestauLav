@@ -1,8 +1,8 @@
 # RestauLav
 A Restaurant Featuring Demo App -User | Admin 
 
-Built with Laravel 7.25
-Practised an idea of using a single login page to authenticate both Admins and Users and have them redirected to specific dashboards. That implies that loginController and registerController's  $redirectTo property has no actually value but it determined by the account's role using a little function written on the User Model. And the redirect function on authenticate.php which is in Middleware has been modified to suit the condition.
+Built with Laravel 7.25.
+Practised an idea of using a single login page to authenticate both Admins and Users and have them redirected to specific dashboards. That implies that loginController and registerController's  $redirectTo property has no actually value but it determined by the account's role using a little function written on the User Model. And the redirect function on authenticate.php which is in Middleware has been modified to suit the condition. Laravel Socialite using Github Login Interface as implementation tool was was as a means to authenticate users which directly redirects them to the user dashboard. 
 Made Use of packages like UniSharp FileManager, htmlCollective, disqus, sluggable, srmklive/PayPal, Socialite(Using Github Login Interface),  dropzone and ...
 
 
@@ -21,7 +21,7 @@ PAYPAL_CURRENCY=USD  --
 PAYPAL_SANDBOX_API_CERTIFICATE=
 
 
-To use Socialite(Github as i used), you'll need some credentials on your .env file. You'll need to create a github app so as to get this or check out the documentation on : https://laravel.com/docs/7.x/socialite
+To use Socialite(Github Login as I used), you'll need some credentials on your .env file. You'll need to create a github app so as to get this. Check out the documentation on : https://laravel.com/docs/7.x/socialite
 
 GITHUB_CLIENT_ID = --
 GITHUB_CLIENT_SECRET = --
