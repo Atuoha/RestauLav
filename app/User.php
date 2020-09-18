@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Socialite\Facades\Socialite;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'photo_id', 'role_id', 'status', 'job_title'
+        'name', 'email', 'password', 'photo_id', 'role_id', 'status', 'job_title', 'provider_id'
     ];
 
     /**
@@ -61,6 +62,9 @@ class User extends Authenticatable
     public function photo(){
         return $this->belongsTo('App\Photo');
     }
+
+
+
 
     
 }

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use App\Photo;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -48,4 +51,40 @@ class LoginController extends Controller
             }
         }
     }
+
+
+    
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        $finduser = User::where('provider_id', $user->getId() )->first();
+
+        if(!$finduser){
+        $user = User::create([
+            'name'=> $user->getNickname(),
+            'email'=> $user->getEmail(),
+            'role_id'=> 2,
+            // 'photo_id'=>$photo_id,
+            'status'=>1,
+            'providier_id'=>$user->getId(),
+            ]);
+        }    
+       
+        Auth::login($user, true);    
+
+        return redirect('/user/dashboard');
+    }
+
+
 }
